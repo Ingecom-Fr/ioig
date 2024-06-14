@@ -1,0 +1,61 @@
+# For EAGE project files
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Autosave files
+*.~*
+
+# Build output files
+*.elf
+*.hex
+*.bin
+*.map
+
+# Compiled object files
+*.o
+*.obj
+
+# Assembly files
+*.s
+*.asm
+
+# Linker script files
+*.ld
+*.ldscript
+
+# CMake files
+CMakeLists.txt
+cmake_build_debug
+*.cmake
+# For KiCad project files
+
+# Temporary files
+*.000
+*.bak
+*.bck
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*-backups
+*.kicad_prl
+*.sch-bak
+*~
+_autosave-*
+*.tmp
+*-save.pro
+*-save.kicad_pcb
+fp-info-cache
+
+# Netlist files (exported from Eeschema)
+*.net
+
+# Autorouter files (exported from Pcbnew)
+*.drd
+*.txt
+*.svg
+*.kicad_pcb
+*.kicad_sch
+*.epr
+*.xpr

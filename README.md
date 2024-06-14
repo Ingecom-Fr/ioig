@@ -73,7 +73,7 @@ sudo udevadm trigger
 
 ~~~
 cd ~/ #default folder, change it if needed 
-git clone git@bitbucket.org:ingecom-embed/ioig.git
+git clone https://github.com/Ingecom-Fr/ioig.git
 cd ioig
 mkdir build && cd build
 cmake -G "Unix Makefiles" -DBUILD_IOIG_FW=1 -DBUILD_IOIG_TESTS=1 ..
@@ -119,7 +119,7 @@ pacman -S git make mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-fmt mingw-w
 
 ~~~
 cd ~/ #default folder, change it if needed 
-git clone git@bitbucket.org:ingecom-embed/ioig.git
+git clone https://github.com/Ingecom-Fr/ioig.git
 cd ioig
 mkdir build && cd build
 cmake -G "Unix Makefiles" -DBUILD_IOIG_FW=1 -DBUILD_IOIG_TESTS=1 ..
@@ -187,7 +187,7 @@ sudo nvram usb-devices="allow"
 
 ~~~
 cd ~/ #default folder, change it if needed 
-git clone git@bitbucket.org:ingecom-embed/ioig.git
+git clone https://github.com/Ingecom-Fr/ioig.git
 cd ioig
 mkdir build && cd build
 cmake -G "Unix Makefiles" -DBUILD_IOIG_FW=1 -DBUILD_IOIG_TESTS=1 ..

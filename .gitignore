@@ -1,0 +1,22 @@
+# Ignore build artifacts
+build/
+dist/
+install/
+
+# Ignore editor-specific files
+*.sublime-project
+*.sublime-workspace
+.vscode/
+.idea/
+*.swp
+*.o
+
+#ignore external modules
+host/ArduinoCore-API/
+
+# Ignore sensitive or environment-specific configuration files
+.env
+.env.local
+
+
+__pycache__
