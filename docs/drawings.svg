@@ -25,7 +25,7 @@
      showgrid="false"
      inkscape:zoom="1.5554293"
      inkscape:cx="439.74998"
-     inkscape:cy="63.969478"
+     inkscape:cy="121.83132"
      inkscape:window-width="2560"
      inkscape:window-height="1600"
      inkscape:window-x="1920"
@@ -1348,7 +1348,7 @@
        id="rect1496"
        width="53.524818"
        height="85.329773"
-       x="5.9261565"
+       x="4.8678231"
        y="9.953433"
        ry="1.9896131"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
@@ -1359,7 +1359,7 @@
        id="rect1496-1"
        width="50.63216"
        height="28.95118"
-       x="7.3724856"
+       x="6.3141522"
        y="64.206268"
        ry="0.6750474"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
@@ -1370,7 +1370,7 @@
        id="rect1496-2"
        width="53.524818"
        height="85.329773"
-       x="76.848404"
+       x="75.79007"
        y="9.953433"
        ry="1.9896131"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
@@ -1381,7 +1381,7 @@
        id="rect1496-1-8"
        width="50.63216"
        height="28.95118"
-       x="78.294731"
+       x="77.236397"
        y="64.716591"
        ry="0.6750474"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
@@ -1392,7 +1392,7 @@
        id="rect1496-2-9"
        width="53.524818"
        height="85.329773"
-       x="154.17148"
+       x="153.11316"
        y="9.953433"
        ry="1.9896131"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
@@ -1403,7 +1403,7 @@
        id="rect1496-1-8-3"
        width="50.63216"
        height="28.95118"
-       x="155.61781"
+       x="154.55949"
        y="64.479378"
        ry="0.6750474"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
@@ -1414,7 +1414,7 @@
        id="rect1496-1-91"
        width="48.918751"
        height="15.883986"
-       x="8.4157743"
+       x="7.3574409"
        y="76.215126"
        ry="0.37036285"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
@@ -1452,7 +1452,7 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.145894;stroke-miterlimit:4;stroke-dasharray:none"
-       x="21.612633"
+       x="20.593121"
        y="85.256638"
        id="text10961-0"
        transform="scale(1.03808,0.96331689)"
@@ -1461,13 +1461,13 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.145894;stroke-miterlimit:4;stroke-dasharray:none"
-         x="21.612633"
+         x="20.593121"
          y="85.256638"
          id="tspan10963-5">ioig API</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.145894;stroke-miterlimit:4;stroke-dasharray:none"
-       x="9.5222712"
+       x="8.5027609"
        y="92.829659"
        id="text10961-0-2"
        transform="scale(1.03808,0.96331689)"
@@ -1475,14 +1475,14 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444008px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.145894;stroke-miterlimit:4;stroke-dasharray:none"
-         x="9.5222712"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.145894;stroke-miterlimit:4;stroke-dasharray:none"
+         x="8.5027609"
          y="92.829659"
          id="tspan10963-5-7">Arduino-Core API</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.145894;stroke-miterlimit:4;stroke-dasharray:none"
-       x="84.218857"
+       x="83.199341"
        y="73.65638"
        id="text10961-1"
        transform="scale(1.03808,0.96331689)"
@@ -1491,13 +1491,13 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.145894;stroke-miterlimit:4;stroke-dasharray:none"
-         x="84.218857"
+         x="83.199341"
          y="73.65638"
          id="tspan10963-8">MCU Board</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.145894;stroke-miterlimit:4;stroke-dasharray:none"
-       x="88.186943"
+       x="87.167427"
        y="79.138931"
        id="text10961-1-8"
        transform="scale(1.03808,0.96331689)"
@@ -1506,13 +1506,13 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.145894;stroke-miterlimit:4;stroke-dasharray:none"
-         x="88.186943"
+         x="87.167427"
          y="79.138931"
          id="tspan10963-8-7">RPI-Pico</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-       x="162.94853"
+       x="161.92903"
        y="83.933899"
        id="text10961-2-9"
        transform="scale(1.03808,0.96331689)"
@@ -1521,7 +1521,7 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-         x="162.94853"
+         x="161.92903"
          y="83.933899"
          id="tspan25163">Devices</tspan></text>
     <g
@@ -1541,7 +1541,7 @@
        id="rect53378"
        width="13.495913"
        height="26.177271"
-       x="61.527138"
+       x="60.468803"
        y="36.045822"
        ry="3.4103057"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
@@ -1552,7 +1552,7 @@
        id="rect53378-6"
        width="17.932676"
        height="79.16906"
-       x="133.5338"
+       x="132.47548"
        y="12.259775"
        ry="4.7037721"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
@@ -1561,7 +1561,7 @@
     <g
        style="fill:#083a42"
        id="g1943"
-       transform="matrix(0,0.38982147,-0.38982147,0,72.514663,40.018996)"
+       transform="matrix(0,0.38982147,-0.38982147,0,71.456329,40.018996)"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -1574,7 +1574,7 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-       x="132.81143"
+       x="131.79193"
        y="50.380455"
        id="text10961-2-9-9-3"
        transform="scale(1.03808,0.96331689)"
@@ -1583,13 +1583,13 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-         x="132.81143"
+         x="131.79193"
          y="50.380455"
          id="tspan25163-5-9">I2C</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-       x="133.25734"
+       x="132.23784"
        y="41.089733"
        id="text10961-2-9-9-3-4"
        transform="scale(1.03808,0.96331689)"
@@ -1598,13 +1598,13 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-         x="133.25734"
+         x="132.23784"
          y="41.089733"
          id="tspan25163-5-9-9">SPI</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-       x="130.51697"
+       x="129.49747"
        y="31.799011"
        id="text10961-2-9-9-3-4-9"
        transform="scale(1.03808,0.96331689)"
@@ -1613,13 +1613,13 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-         x="130.51697"
+         x="129.49747"
          y="31.799011"
          id="tspan25163-5-9-9-0">GPIO</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-       x="60.400013"
+       x="59.380505"
        y="58.89621"
        id="text10961-2-9-9-3-4-9-3"
        transform="scale(1.03808,0.96331689)"
@@ -1628,13 +1628,13 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-         x="60.400013"
+         x="59.380505"
          y="58.89621"
          id="tspan25163-5-9-9-0-9">USB</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-       x="130.23192"
+       x="129.21242"
        y="59.688107"
        id="text10961-2-9-9-3-4-5-7"
        transform="scale(1.03808,0.96331689)"
@@ -1643,13 +1643,13 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-         x="130.23192"
+         x="129.21242"
          y="59.688107"
          id="tspan25163-5-9-9-5-3">PWM</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-       x="129.74651"
+       x="128.72701"
        y="68.936501"
        id="text10961-2-9-9-3-4-5"
        transform="scale(1.03808,0.96331689)"
@@ -1658,13 +1658,13 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-         x="129.74651"
+         x="128.72701"
          y="68.936501"
          id="tspan25163-5-9-9-5">UART</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-       x="131.4991"
+       x="130.4796"
        y="78.252617"
        id="text10961-2-9-9-3-4-5-72"
        transform="scale(1.03808,0.96331689)"
@@ -1673,13 +1673,13 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.173764;stroke-miterlimit:4;stroke-dasharray:none"
-         x="131.4991"
+         x="130.4796"
          y="78.252617"
          id="tspan25163-5-9-9-5-7">ADC</tspan></text>
     <g
        style="fill:none;stroke:#083a42"
        id="g53073-9"
-       transform="matrix(0.35000855,0,0,0.35000855,140.06065,12.916345)"
+       transform="matrix(0.35000855,0,0,0.35000855,139.00231,12.916345)"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -1695,7 +1695,7 @@
     <g
        style="fill:#083a42;stroke:#083a42"
        id="g53073-9-5"
-       transform="matrix(-0.35000855,0,0,0.35000855,144.41497,14.316379)"
+       transform="matrix(-0.35000855,0,0,0.35000855,143.35663,14.316379)"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -1711,7 +1711,7 @@
     <g
        style="fill:none;stroke:#083a42"
        id="g53073-9-2"
-       transform="matrix(0.35000855,0,0,0.35000855,140.6573,80.350967)"
+       transform="matrix(0.35000855,0,0,0.35000855,139.59896,80.350967)"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -1727,7 +1727,7 @@
     <g
        style="fill:#083a42;stroke:#083a42"
        id="g53073-9-5-2"
-       transform="matrix(-0.35000855,0,0,0.35000855,145.01162,81.751001)"
+       transform="matrix(-0.35000855,0,0,0.35000855,143.95328,81.751001)"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -1743,7 +1743,7 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.143604;stroke-miterlimit:4;stroke-dasharray:none"
-       x="11.896761"
+       x="10.877251"
        y="73.806114"
        id="text10961-2"
        transform="scale(1.03808,0.96331689)"
@@ -1752,7 +1752,7 @@
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.143604;stroke-miterlimit:4;stroke-dasharray:none"
-         x="11.896761"
+         x="10.877251"
          y="73.806114"
          id="tspan10963-4">Host Computer</tspan></text>
     <rect
@@ -1760,7 +1760,7 @@
        id="rect1496-1-91-6"
        width="42.092037"
        height="11.924634"
-       x="82.223206"
+       x="81.164871"
        y="80.174477"
        ry="0.27804363"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
@@ -1768,8 +1768,8 @@
        inkscape:export-ydpi="96" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444008px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.145894;stroke-miterlimit:4;stroke-dasharray:none"
-       x="81.881668"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.145894;stroke-miterlimit:4;stroke-dasharray:none"
+       x="80.862152"
        y="90.963463"
        id="text10961"
        transform="scale(1.03808,0.96331689)"
@@ -1777,8 +1777,8 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444008px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.145894;stroke-miterlimit:4;stroke-dasharray:none"
-         x="81.881668"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:Chilanka;-inkscape-font-specification:'Chilanka, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.145894;stroke-miterlimit:4;stroke-dasharray:none"
+         x="80.862152"
          y="90.963463"
          id="tspan10963">ioig Firmware</tspan></text>
     <g
@@ -1794,7 +1794,7 @@
     </g>
     <g
        id="g31071"
-       transform="matrix(1.0568237,0,0,1.0568237,-10.427594,-2.1519798)"
+       transform="matrix(1.0568237,0,0,1.0568237,-11.485928,-2.1519798)"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -1813,7 +1813,7 @@
     </g>
     <path
        style="fill:#555753;stroke-width:0.0509998"
-       d="m 114.00379,16.797693 h -3.65189 c -0.21772,0 -0.39433,0.176561 -0.39433,0.39433 v 0.602104 c 0,0.372757 -0.3032,0.676001 -0.67601,0.676001 H 98.107413 c -0.37275,0 -0.676,-0.303244 -0.676,-0.676001 v -0.602104 c 0,-0.217769 -0.17656,-0.39433 -0.39433,-0.39433 h -4.875578 c -1.177125,0 -2.134748,0.957674 -2.134748,2.134799 v 21.842284 c 0,1.177177 0.957623,2.134799 2.134748,2.134799 h 4.875578 c 0.21777,0 0.39433,-0.176561 0.39433,-0.39433 v -0.602103 c 0,-0.372758 0.30325,-0.676002 0.676,-0.676002 h 11.174047 c 0.37281,0 0.676,0.303244 0.676,0.676002 v 0.602103 c 0,0.217769 0.17662,0.39433 0.39433,0.39433 h 3.65189 c 1.17718,0 2.1348,-0.957622 2.1348,-2.134799 V 18.932492 c 5e-5,-1.177125 -0.95757,-2.134799 -2.13469,-2.134799 z"
+       d="m 112.94545,16.797693 h -3.65189 c -0.21772,0 -0.39433,0.176561 -0.39433,0.39433 v 0.602104 c 0,0.372757 -0.3032,0.676001 -0.67601,0.676001 H 97.049079 c -0.37275,0 -0.676,-0.303244 -0.676,-0.676001 v -0.602104 c 0,-0.217769 -0.17656,-0.39433 -0.39433,-0.39433 h -4.875578 c -1.177125,0 -2.134748,0.957674 -2.134748,2.134799 v 21.842284 c 0,1.177177 0.957623,2.134799 2.134748,2.134799 h 4.875578 c 0.21777,0 0.39433,-0.176561 0.39433,-0.39433 v -0.602103 c 0,-0.372758 0.30325,-0.676002 0.676,-0.676002 h 11.174041 c 0.37281,0 0.676,0.303244 0.676,0.676002 v 0.602103 c 0,0.217769 0.17662,0.39433 0.39433,0.39433 h 3.65189 c 1.17718,0 2.1348,-0.957622 2.1348,-2.134799 V 18.932492 c 5e-5,-1.177125 -0.95757,-2.134799 -2.13469,-2.134799 z"
        id="path1326"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
@@ -1821,7 +1821,7 @@
     <g
        style="opacity:0.15"
        id="g1330"
-       transform="matrix(0.05099977,0,0,0.05099977,90.026706,16.797693)"
+       transform="matrix(0.05099977,0,0,0.05099977,88.968372,16.797693)"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -1832,7 +1832,7 @@
     </g>
     <g
        id="g1336"
-       transform="matrix(0.05614991,0,0,0.05614991,89.299834,15.34854)"
+       transform="matrix(0.05614991,0,0,0.05614991,88.2415,15.34854)"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -1847,28 +1847,28 @@
     </g>
     <path
        style="fill:#547475;stroke-width:0.05615"
-       d="M 108.67852,23.644634 H 98.382648 c -0.513829,0 -0.930352,0.416575 -0.930352,0.930347 v 10.295873 c 0,0.513828 0.416579,0.930348 0.930352,0.930348 h 10.295872 c 0.51382,0 0.93034,-0.416576 0.93034,-0.930348 v -1.721669 -7.07062 -1.503584 c 0,-0.513772 -0.41652,-0.930347 -0.93034,-0.930347 z m -2.3569,9.117454 h -5.64407 v -5.954249 h 5.64412 v 5.954249 z"
+       d="M 107.62018,23.644634 H 97.324314 c -0.513829,0 -0.930352,0.416575 -0.930352,0.930347 v 10.295873 c 0,0.513828 0.416579,0.930348 0.930352,0.930348 h 10.295866 c 0.51382,0 0.93034,-0.416576 0.93034,-0.930348 v -1.721669 -7.07062 -1.503584 c 0,-0.513772 -0.41652,-0.930347 -0.93034,-0.930347 z m -2.3569,9.117454 h -5.644067 v -5.954249 h 5.644117 v 5.954249 z"
        id="path1338"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <path
        style="fill:#384949;stroke-width:0.05615"
-       d="m 107.74817,33.196239 c 0,0.411018 -0.3332,0.744268 -0.74428,0.744268 h -6.94663 c -0.411079,0 -0.744269,-0.33325 -0.744269,-0.744268 v -6.946587 c 0,-0.411074 0.33319,-0.744267 0.744269,-0.744267 h 6.94663 c 0.41108,0 0.74428,0.333193 0.74428,0.744267 z"
+       d="m 106.68983,33.196239 c 0,0.411018 -0.3332,0.744268 -0.74428,0.744268 h -6.946624 c -0.411079,0 -0.744269,-0.33325 -0.744269,-0.744268 v -6.946587 c 0,-0.411074 0.33319,-0.744267 0.744269,-0.744267 h 6.946624 c 0.41108,0 0.74428,0.333193 0.74428,0.744267 z"
        id="path1340"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <path
        style="opacity:0.15;fill:#231f20;stroke-width:0.05615;enable-background:new"
-       d="m 100.30543,33.196239 v -6.946587 c 0,-0.411074 0.33326,-0.744267 0.74427,-0.744267 h -0.99244 c -0.411079,0 -0.744269,0.333193 -0.744269,0.744267 v 6.946587 c 0,0.411018 0.33319,0.744268 0.744269,0.744268 h 0.99244 c -0.41101,5.6e-5 -0.74427,-0.33325 -0.74427,-0.744268 z"
+       d="m 99.247096,33.196239 v -6.946587 c 0,-0.411074 0.333257,-0.744267 0.744267,-0.744267 h -0.992437 c -0.411079,0 -0.744269,0.333193 -0.744269,0.744267 v 6.946587 c 0,0.411018 0.33319,0.744268 0.744269,0.744268 h 0.992437 c -0.41101,5.6e-5 -0.744267,-0.33325 -0.744267,-0.744268 z"
        id="path1342"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <g
        id="g1350"
-       transform="matrix(0.05099977,0,0,0.05099977,90.026706,16.797693)"
+       transform="matrix(0.05099977,0,0,0.05099977,88.968372,16.797693)"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -1893,7 +1893,7 @@
     </g>
     <g
        id="g1384"
-       transform="matrix(0.05614991,0,0,0.05614991,89.299834,15.34854)"
+       transform="matrix(0.05614991,0,0,0.05614991,88.2415,15.34854)"
        style="fill:#168967"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
@@ -1965,7 +1965,7 @@
     </g>
     <g
        id="g1416"
-       transform="matrix(0.05099977,0,0,0.05099977,90.026706,16.797693)"
+       transform="matrix(0.05099977,0,0,0.05099977,88.968372,16.797693)"
        style="fill:#9ade00"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
@@ -2013,56 +2013,56 @@
     </g>
     <path
        style="fill:#9ade00;stroke-width:0.0509998"
-       d="m 112.97124,23.957353 c 0.23332,0 0.42314,0.189159 0.42314,0.422533 0,0.233375 -0.1886,0.422534 -0.42187,0.422534 h -0.001 c -0.23333,0 -0.42253,-0.189159 -0.42253,-0.422534 -6e-5,-0.233374 0.1891,-0.422533 0.42243,-0.422533 z"
+       d="m 111.9129,23.957353 c 0.23332,0 0.42314,0.189159 0.42314,0.422533 0,0.233375 -0.1886,0.422534 -0.42187,0.422534 h -0.001 c -0.23333,0 -0.42253,-0.189159 -0.42253,-0.422534 -6e-5,-0.233374 0.1891,-0.422533 0.42243,-0.422533 z"
        id="path1396-3"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <path
        style="fill:#9ade00;stroke-width:0.0509998"
-       d="m 112.97124,20.884311 c 0.23332,0 0.42314,0.189158 0.42314,0.422533 0,0.233375 -0.1886,0.422533 -0.42187,0.422533 h -0.001 c -0.23333,0 -0.42253,-0.189158 -0.42253,-0.422533 -6e-5,-0.233375 0.1891,-0.422533 0.42243,-0.422533 z"
+       d="m 111.9129,20.884311 c 0.23332,0 0.42314,0.189158 0.42314,0.422533 0,0.233375 -0.1886,0.422533 -0.42187,0.422533 h -0.001 c -0.23333,0 -0.42253,-0.189158 -0.42253,-0.422533 -6e-5,-0.233375 0.1891,-0.422533 0.42243,-0.422533 z"
        id="path1400-0"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <path
        style="fill:#9ade00;stroke-width:0.0509998"
-       d="m 112.97124,22.420832 c 0.23332,0 0.42314,0.189158 0.42314,0.422533 0,0.233324 -0.1886,0.422534 -0.42187,0.422534 h -0.001 c -0.23333,0 -0.42253,-0.189159 -0.42253,-0.422534 -6e-5,-0.233375 0.1891,-0.422533 0.42243,-0.422533 z"
+       d="m 111.9129,22.420832 c 0.23332,0 0.42314,0.189158 0.42314,0.422533 0,0.233324 -0.1886,0.422534 -0.42187,0.422534 h -0.001 c -0.23333,0 -0.42253,-0.189159 -0.42253,-0.422534 -6e-5,-0.233375 0.1891,-0.422533 0.42243,-0.422533 z"
        id="path1402-6"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <path
        style="fill:#9ade00;stroke-width:0.0509998"
-       d="m 112.97124,34.684976 c 0.23332,0 0.42314,0.189158 0.42314,0.422533 0,0.233324 -0.1886,0.422533 -0.42187,0.422533 h -0.001 c -0.23333,0 -0.42253,-0.189158 -0.42253,-0.422533 -6e-5,-0.233375 0.1891,-0.422533 0.42243,-0.422533 z"
+       d="m 111.9129,34.684976 c 0.23332,0 0.42314,0.189158 0.42314,0.422533 0,0.233324 -0.1886,0.422533 -0.42187,0.422533 h -0.001 c -0.23333,0 -0.42253,-0.189158 -0.42253,-0.422533 -6e-5,-0.233375 0.1891,-0.422533 0.42243,-0.422533 z"
        id="path1406-5"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <path
        style="fill:#9ade00;stroke-width:0.0509998"
-       d="m 112.97124,36.221497 c 0.23332,0 0.42314,0.189158 0.42314,0.422533 0,0.233324 -0.1886,0.422533 -0.42187,0.422533 h -0.001 c -0.23333,0 -0.42253,-0.189158 -0.42253,-0.422533 -6e-5,-0.233375 0.1891,-0.422533 0.42243,-0.422533 z"
+       d="m 111.9129,36.221497 c 0.23332,0 0.42314,0.189158 0.42314,0.422533 0,0.233324 -0.1886,0.422533 -0.42187,0.422533 h -0.001 c -0.23333,0 -0.42253,-0.189158 -0.42253,-0.422533 -6e-5,-0.233375 0.1891,-0.422533 0.42243,-0.422533 z"
        id="path1408-5"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <path
        style="fill:#9ade00;stroke-width:0.0509998"
-       d="m 112.97124,37.758018 c 0.23332,0 0.42314,0.189158 0.42314,0.422533 0,0.233324 -0.1886,0.422533 -0.42187,0.422533 h -0.001 c -0.23333,0 -0.42253,-0.189158 -0.42253,-0.422533 0,-0.233375 0.1891,-0.422533 0.42243,-0.422533 z"
+       d="m 111.9129,37.758018 c 0.23332,0 0.42314,0.189158 0.42314,0.422533 0,0.233324 -0.1886,0.422533 -0.42187,0.422533 h -0.001 c -0.23333,0 -0.42253,-0.189158 -0.42253,-0.422533 0,-0.233375 0.1891,-0.422533 0.42243,-0.422533 z"
        id="path1410-4"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <path
        style="fill:#ebf25f;stroke-width:0.0509998"
-       d="m 116.13853,25.177873 h -0.80855 c -0.37337,0 -0.676,0.302633 -0.676,0.676002 v 7.999518 c 0,0.373318 0.30263,0.676002 0.676,0.676002 h 0.80855 z"
+       d="m 115.08019,25.177873 h -0.80855 c -0.37337,0 -0.676,0.302633 -0.676,0.676002 v 7.999518 c 0,0.373318 0.30263,0.676002 0.676,0.676002 h 0.80855 z"
        id="path1418"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <g
        id="g12986-8"
-       transform="matrix(0.77331456,0,0,0.77331456,36.495682,38.688583)"
+       transform="matrix(0.77331456,0,0,0.77331456,35.437348,38.688583)"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -2430,7 +2430,7 @@
     </g>
     <g
        id="g7146"
-       transform="translate(-3.3693369,0.72958279)"
+       transform="translate(-4.4276703,0.72958279)"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -2479,7 +2479,8 @@
        id="g7153"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96">
+       inkscape:export-ydpi="96"
+       transform="translate(-1.0583333)">
       <path
          d="m 187.45191,51.205137 h -1.38889 v -1.388892 h -0.69445 v 3.125006 H 179.813 v -5.555566 l 3.12501,-3.12e-4 v -0.694134 h -1.38889 v -1.388891 h -0.69445 v 1.388891 H 179.813 a 0.69514023,0.69514023 0 0 0 -0.69444,0.694446 v 1.041669 h -1.38889 V 49.1218 h 1.38889 v 2.083337 h -1.38889 v 0.694446 h 1.38889 v 1.041668 a 0.69524439,0.69524439 0 0 0 0.69444,0.694446 h 1.04167 v 1.388892 h 0.69445 v -1.388892 h 2.08333 v 1.388892 h 0.69445 v -1.388892 h 1.04167 a 0.69538328,0.69538328 0 0 0 0.69445,-0.694446 v -1.041668 h 1.38889 z"
          id="path5630-8"
@@ -2522,14 +2523,14 @@
          inkscape:export-ydpi="96" />
     </g>
     <path
-       d="m 194.25324,38.76168 c 0,0.20501 -0.16638,0.371394 -0.37139,0.371394 -0.20502,0 -0.37139,-0.166384 -0.37139,-0.371394 0,-0.205008 0.16637,-0.371393 0.37139,-0.371393 0.20501,0 0.37139,0.166385 0.37139,0.371393 z m 1.70618,-0.522178 c 0,0.20501 -0.16638,0.371393 -0.3714,0.371393 -0.20537,0 -0.37139,-0.166383 -0.37139,-0.371393 0,-0.205381 0.16602,-0.371393 0.37139,-0.371393 0.20502,0 0.3714,0.166012 0.3714,0.371393 z m 0.52218,-1.70618 c 0,0.205009 -0.16638,0.371394 -0.3714,0.371394 -0.20501,0 -0.37139,-0.166385 -0.37139,-0.371394 0,-0.205009 0.16638,-0.371392 0.37139,-0.371392 0.20502,0 0.3714,0.166383 0.3714,0.371392 z m 1.85696,5.570896 c -0.61428,0 -1.11417,-0.499895 -1.11417,-1.114178 0,-0.483555 0.31159,-0.891716 0.74278,-1.045844 v -0.773612 -0.03751 h 0.74278 v 0.03751 0.773612 c 0.43119,0.154128 0.74279,0.562289 0.74279,1.045844 0,0.614283 -0.49989,1.114178 -1.11418,1.114178 z m -0.37139,-3.713931 h 0.74278 v -0.742786 h -0.74278 z m 0,-1.485571 h 0.74278 V 36.16193 h -0.74278 z m 1.48557,2.608292 v -4.093865 h -2.22835 v 4.093865 c -0.44865,0.338711 -0.74279,0.871661 -0.74279,1.477032 0,1.025415 0.83154,1.856964 1.85696,1.856964 1.02542,0 1.85697,-0.831549 1.85697,-1.856964 0,-0.605371 -0.29414,-1.138321 -0.74279,-1.477032 z m -5.57089,-2.608292 c -0.20464,0 -0.37139,-0.166756 -0.37139,-0.371394 0,-0.204637 0.16675,-0.371392 0.37139,-0.371392 0.20463,0 0.37139,0.166755 0.37139,0.371392 0,0.204638 -0.16676,0.371394 -0.37139,0.371394 z m 0,-1.485573 c -0.6154,0 -1.11419,0.498781 -1.11419,1.114179 0,0.615399 0.49879,1.114179 1.11419,1.114179 0.6154,0 1.11418,-0.49878 1.11418,-1.114179 0,-0.615398 -0.49878,-1.114179 -1.11418,-1.114179 z"
+       d="m 193.1949,38.76168 c 0,0.20501 -0.16638,0.371394 -0.37139,0.371394 -0.20502,0 -0.37139,-0.166384 -0.37139,-0.371394 0,-0.205008 0.16637,-0.371393 0.37139,-0.371393 0.20501,0 0.37139,0.166385 0.37139,0.371393 z m 1.70618,-0.522178 c 0,0.20501 -0.16638,0.371393 -0.3714,0.371393 -0.20537,0 -0.37139,-0.166383 -0.37139,-0.371393 0,-0.205381 0.16602,-0.371393 0.37139,-0.371393 0.20502,0 0.3714,0.166012 0.3714,0.371393 z m 0.52218,-1.70618 c 0,0.205009 -0.16638,0.371394 -0.3714,0.371394 -0.20501,0 -0.37139,-0.166385 -0.37139,-0.371394 0,-0.205009 0.16638,-0.371392 0.37139,-0.371392 0.20502,0 0.3714,0.166383 0.3714,0.371392 z m 1.85696,5.570896 c -0.61428,0 -1.11417,-0.499895 -1.11417,-1.114178 0,-0.483555 0.31159,-0.891716 0.74278,-1.045844 v -0.773612 -0.03751 h 0.74278 v 0.03751 0.773612 c 0.43119,0.154128 0.74279,0.562289 0.74279,1.045844 0,0.614283 -0.49989,1.114178 -1.11418,1.114178 z m -0.37139,-3.713931 h 0.74278 v -0.742786 h -0.74278 z m 0,-1.485571 h 0.74278 V 36.16193 h -0.74278 z m 1.48557,2.608292 v -4.093865 h -2.22835 v 4.093865 c -0.44865,0.338711 -0.74279,0.871661 -0.74279,1.477032 0,1.025415 0.83154,1.856964 1.85696,1.856964 1.02542,0 1.85697,-0.831549 1.85697,-1.856964 0,-0.605371 -0.29414,-1.138321 -0.74279,-1.477032 z m -5.57089,-2.608292 c -0.20464,0 -0.37139,-0.166756 -0.37139,-0.371394 0,-0.204637 0.16675,-0.371392 0.37139,-0.371392 0.20463,0 0.37139,0.166755 0.37139,0.371392 0,0.204638 -0.16676,0.371394 -0.37139,0.371394 z m 0,-1.485573 c -0.6154,0 -1.11419,0.498781 -1.11419,1.114179 0,0.615399 0.49879,1.114179 1.11419,1.114179 0.6154,0 1.11418,-0.49878 1.11418,-1.114179 0,-0.615398 -0.49878,-1.114179 -1.11418,-1.114179 z"
        id="thermometer_sun-[#747]"
        style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:0.37139"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <path
-       d="m 165.51529,42.529838 c 0.72691,0.674779 1.70031,1.08742 2.76912,1.08742 1.06604,0 2.03704,-0.41043 2.76339,-1.082077 0.0746,-0.0689 0.0793,-0.185505 0.0108,-0.260295 -0.069,-0.07461 -0.18569,-0.07921 -0.26029,-0.01012 -0.6606,0.610672 -1.54354,0.984074 -2.51324,0.984074 -0.9721,0 -1.85727,-0.375429 -2.5184,-0.989048 -0.0746,-0.06908 -0.19122,-0.06484 -0.26048,0.0098 -0.0692,0.07443 -0.0648,0.191215 0.01,0.260295 z m 0.7258,-0.722305 c 0.54105,0.488721 1.25765,0.786412 2.04332,0.786412 0.78273,0 1.4971,-0.295479 2.03722,-0.78107 0.0757,-0.06799 0.0821,-0.184582 0.0141,-0.260294 -0.068,-0.07553 -0.18459,-0.0818 -0.26028,-0.01382 -0.47492,0.42701 -1.1029,0.686752 -1.79096,0.686752 -0.69061,0 -1.32062,-0.261585 -1.79626,-0.691356 -0.0754,-0.06816 -0.19194,-0.06226 -0.26012,0.01308 -0.0682,0.07553 -0.0622,0.192136 0.0131,0.260297 z m 0.72858,-0.721201 c 0.35387,0.301929 0.81294,0.484485 1.31437,0.484485 0.49849,0 0.95534,-0.180529 1.30848,-0.479695 0.0776,-0.06559 0.0872,-0.182004 0.0213,-0.259558 -0.0655,-0.07756 -0.18201,-0.08714 -0.25957,-0.02155 -0.28884,0.244821 -0.66244,0.392377 -1.07029,0.392377 -0.41005,0 -0.78568,-0.149214 -1.07508,-0.396431 -0.0774,-0.06594 -0.1938,-0.05674 -0.25973,0.02063 -0.066,0.07736 -0.0567,0.19361 0.0203,0.259743 z m 0.57751,-6.495592 v 0.736857 h -0.92107 c -0.10167,0 -0.18422,0.08252 -0.18422,0.184214 v 0.736859 h -0.36842 c -0.43972,0 -0.8614,0.174635 -1.17234,0.485591 -0.31096,0.310954 -0.4856,0.732622 -0.4856,1.172342 v 1.289502 c 0,0.101685 0.0825,0.184215 0.18422,0.184215 h 2.13763 c 0.0395,0.335455 0.18807,0.660226 0.44505,0.917389 0.6081,0.607909 1.59512,0.607909 2.20322,0 0.25697,-0.257163 0.40545,-0.581934 0.44505,-0.917389 h 2.13763 c 0.10167,0 0.18422,-0.08252 0.18422,-0.184215 v -1.289502 c 0,-0.43972 -0.17464,-0.861388 -0.48559,-1.172342 -0.31096,-0.310956 -0.73263,-0.485591 -1.17234,-0.485591 h -0.36844 v -0.736859 c 0,-0.101685 -0.0825,-0.184214 -0.1842,-0.184214 H 169.0209 V 34.59074 h 0.92108 c 0.14662,0 0.28718,-0.0582 0.39071,-0.161925 0.10369,-0.103529 0.16193,-0.244085 0.16193,-0.39072 V 33.11702 c 0,-0.101684 -0.0825,-0.184214 -0.18422,-0.184214 h -4.05273 c -0.10167,0 -0.1842,0.08252 -0.1842,0.184214 v 0.921075 c 0,0.146635 0.0582,0.287191 0.16192,0.39072 0.10349,0.103709 0.24407,0.161925 0.39072,0.161925 z m 1.91178,4.78958 h -2.34986 c 0.0375,0.2404 0.14887,0.471589 0.33399,0.656725 0.46404,0.464221 1.21785,0.464221 1.68188,0 0.18514,-0.185136 0.29641,-0.416325 0.33399,-0.656725 z m 2.32516,-1.105288 v 0.736859 c 0,0 -7.00015,0 -7.00015,0 v -0.736859 z m -1.2895,-1.657932 h -4.42115 c -0.34209,0 -0.67,0.135766 -0.91187,0.37764 -0.24187,0.241873 -0.37763,0.569776 -0.37763,0.911863 h 7.00015 c 0,-0.342087 -0.13577,-0.66999 -0.37763,-0.911863 -0.24189,-0.241874 -0.56979,-0.37764 -0.91187,-0.37764 z m -3.68429,-0.36843 h 2.94742 v -0.552643 h -2.94742 z m 1.84214,-1.65793 v 0.736857 c 0,0 -0.73686,0 -0.73686,0 0,0 0,-0.736857 0,-0.736857 z m 1.28951,-0.36843 h -3.31587 c -0.0488,0 -0.0957,-0.01936 -0.13025,-0.05398 -0.0346,-0.03445 -0.054,-0.08141 -0.054,-0.13024 0,0 0,-0.736859 0,-0.736859 h 3.6843 v 0.736859 c 0,0.04882 -0.0193,0.09579 -0.054,0.13024 -0.0344,0.03464 -0.0814,0.05398 -0.13023,0.05398 z"
+       d="m 164.45695,42.529838 c 0.72691,0.674779 1.70031,1.08742 2.76912,1.08742 1.06604,0 2.03704,-0.41043 2.76339,-1.082077 0.0746,-0.0689 0.0793,-0.185505 0.0108,-0.260295 -0.069,-0.07461 -0.18569,-0.07921 -0.26029,-0.01012 -0.6606,0.610672 -1.54354,0.984074 -2.51324,0.984074 -0.9721,0 -1.85727,-0.375429 -2.5184,-0.989048 -0.0746,-0.06908 -0.19122,-0.06484 -0.26048,0.0098 -0.0692,0.07443 -0.0648,0.191215 0.01,0.260295 z m 0.7258,-0.722305 c 0.54105,0.488721 1.25765,0.786412 2.04332,0.786412 0.78273,0 1.4971,-0.295479 2.03722,-0.78107 0.0757,-0.06799 0.0821,-0.184582 0.0141,-0.260294 -0.068,-0.07553 -0.18459,-0.0818 -0.26028,-0.01382 -0.47492,0.42701 -1.1029,0.686752 -1.79096,0.686752 -0.69061,0 -1.32062,-0.261585 -1.79626,-0.691356 -0.0754,-0.06816 -0.19194,-0.06226 -0.26012,0.01308 -0.0682,0.07553 -0.0622,0.192136 0.0131,0.260297 z m 0.72858,-0.721201 c 0.35387,0.301929 0.81294,0.484485 1.31437,0.484485 0.49849,0 0.95534,-0.180529 1.30848,-0.479695 0.0776,-0.06559 0.0872,-0.182004 0.0213,-0.259558 -0.0655,-0.07756 -0.18201,-0.08714 -0.25957,-0.02155 -0.28884,0.244821 -0.66244,0.392377 -1.07029,0.392377 -0.41005,0 -0.78568,-0.149214 -1.07508,-0.396431 -0.0774,-0.06594 -0.1938,-0.05674 -0.25973,0.02063 -0.066,0.07736 -0.0567,0.19361 0.0203,0.259743 z m 0.57751,-6.495592 v 0.736857 h -0.92107 c -0.10167,0 -0.18422,0.08252 -0.18422,0.184214 v 0.736859 h -0.36842 c -0.43972,0 -0.8614,0.174635 -1.17234,0.485591 -0.31096,0.310954 -0.4856,0.732622 -0.4856,1.172342 v 1.289502 c 0,0.101685 0.0825,0.184215 0.18422,0.184215 h 2.13763 c 0.0395,0.335455 0.18807,0.660226 0.44505,0.917389 0.6081,0.607909 1.59512,0.607909 2.20322,0 0.25697,-0.257163 0.40545,-0.581934 0.44505,-0.917389 h 2.13763 c 0.10167,0 0.18422,-0.08252 0.18422,-0.184215 v -1.289502 c 0,-0.43972 -0.17464,-0.861388 -0.48559,-1.172342 -0.31096,-0.310956 -0.73263,-0.485591 -1.17234,-0.485591 h -0.36844 v -0.736859 c 0,-0.101685 -0.0825,-0.184214 -0.1842,-0.184214 h -0.92108 V 34.59074 h 0.92108 c 0.14662,0 0.28718,-0.0582 0.39071,-0.161925 0.10369,-0.103529 0.16193,-0.244085 0.16193,-0.39072 V 33.11702 c 0,-0.101684 -0.0825,-0.184214 -0.18422,-0.184214 h -4.05273 c -0.10167,0 -0.1842,0.08252 -0.1842,0.184214 v 0.921075 c 0,0.146635 0.0582,0.287191 0.16192,0.39072 0.10349,0.103709 0.24407,0.161925 0.39072,0.161925 z m 1.91178,4.78958 h -2.34986 c 0.0375,0.2404 0.14887,0.471589 0.33399,0.656725 0.46404,0.464221 1.21785,0.464221 1.68188,0 0.18514,-0.185136 0.29641,-0.416325 0.33399,-0.656725 z m 2.32516,-1.105288 v 0.736859 c 0,0 -7.00015,0 -7.00015,0 v -0.736859 z m -1.2895,-1.657932 h -4.42115 c -0.34209,0 -0.67,0.135766 -0.91187,0.37764 -0.24187,0.241873 -0.37763,0.569776 -0.37763,0.911863 h 7.00015 c 0,-0.342087 -0.13577,-0.66999 -0.37763,-0.911863 -0.24189,-0.241874 -0.56979,-0.37764 -0.91187,-0.37764 z m -3.68429,-0.36843 h 2.94742 v -0.552643 h -2.94742 z m 1.84214,-1.65793 v 0.736857 c 0,0 -0.73686,0 -0.73686,0 0,0 0,-0.736857 0,-0.736857 z m 1.28951,-0.36843 h -3.31587 c -0.0488,0 -0.0957,-0.01936 -0.13025,-0.05398 -0.0346,-0.03445 -0.054,-0.08141 -0.054,-0.13024 0,0 0,-0.736859 0,-0.736859 h 3.6843 v 0.736859 c 0,0.04882 -0.0193,0.09579 -0.054,0.13024 -0.0344,0.03464 -0.0814,0.05398 -0.13023,0.05398 z"
        id="path7086-4"
        style="clip-rule:evenodd;fill:#000000;fill-rule:evenodd;stroke-width:0.184215;stroke-linejoin:round;stroke-miterlimit:2"
        inkscape:export-filename="/home/isaac/develzone/Ingecom/projects/github/ioig/docs/ioig_diagram.png"
