@@ -1,7 +1,7 @@
-# IOIG - Multi Protocol Dongle
+# IOIG - Input/Output Integration Gateway
 
 
-IoIg empowers any USB host device with versatile communication capabilities across various interfaces including I2C, GPIO, SPI, Serial (UART), and Analog, fostering seamless connectivity and integration across diverse sensors ecosystems.
+IoIg (Input/Output Integration Gateway) empowers any USB host device with versatile communication capabilities across various interfaces/protocols including I2C, GPIO, SPI, Serial (UART), and Analog, fostering seamless connectivity and integration across diverse sensors ecosystems.
 
 ![IoIg Diagram](docs/ioig_diagram.png "IoIg")
 
