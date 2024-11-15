@@ -62,3 +62,6 @@ endif()
 add_subdirectory(${HOST_DIR}) #check CMakeLists.txt on host directory
 
 
+# In your main CMakeLists.txt
+set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES
+    "${CMAKE_BINARY_DIR}/install;${CMAKE_BINARY_DIR}/bin")

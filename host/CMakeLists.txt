@@ -33,7 +33,8 @@ link_directories(${CMAKE_INSTALL_PREFIX})
 set(SYS_LIBS usb-1.0 pthread atomic) #should go in the end, after all other libs
 
 
-set(ARDUINO_CORE_API_DIR "${HOST_DIR}/APIs/arduino/ArduinoCore-API/api")
+set(ARDUINO_CORE_DIR "${HOST_DIR}/APIs/arduino")
+set(ARDUINO_CORE_API_DIR "${ARDUINO_CORE_DIR}/ArduinoCore-API/api")
 if(NOT EXISTS ${ARDUINO_CORE_API_DIR})
     #Download submodules
     message(STATUS "Downloading submodules...")
@@ -128,13 +129,14 @@ if(BUILD_IOIG_TESTS)
     foreach(SRC_FILE ${TEST_SRCS})
         # Get the filename without extension
         get_filename_component(BIN_NAME ${SRC_FILE} NAME_WE)
+
     
         # Create the executable
         add_executable(${BIN_NAME} ${SRC_FILE})
         target_link_libraries(${BIN_NAME} ${IOIG_HOST_LIB} ${SYS_LIBS} gtest_main)
     
         # Set the output directory for the executable
-        set_target_properties(${BIN_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY tests)    
+        set_target_properties(${BIN_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests)    
     endforeach()
 endif()
 
@@ -155,7 +157,7 @@ foreach(SRC_FILE ${EXAMPLE_SRCS_IOIG})
     target_link_libraries(${BIN_NAME} ${IOIG_HOST_LIB} ${SYS_LIBS})  
 
     # Set the output directory for the executable
-    set_target_properties(${BIN_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "examples/ioig")    
+    set_target_properties(${BIN_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/examples/ioig)    
 endforeach()
 
 #==========================================================
@@ -165,22 +167,24 @@ endforeach()
 set(EXAMPLES_DIR_ARDUINO ${PRJ_ROOT_DIR}/examples/arduino)
 file(GLOB EXAMPLE_SRCS_ARDUINO ${EXAMPLES_DIR_ARDUINO}/*.cpp)
 
-set(ARDUINO_CORE_API_HEADER "${ARDUINO_CORE_API_DIR}/ArduinoAPI.h")
+#set(ARDUINO_CORE_API_HEADER "${ARDUINO_CORE_API_DIR}/ArduinoAPI.h")
+set(ARDUINO_CORE_API_HEADER "${ARDUINO_CORE_DIR}/cores/ioig/Arduino.h")
 
 # Iterate over each source file and create an executable
 foreach(SRC_FILE ${EXAMPLE_SRCS_ARDUINO})
     # Get the filename without extension
     get_filename_component(BIN_NAME ${SRC_FILE} NAME_WE)
 
+
     # Create the executable
     add_executable(${BIN_NAME} ${SRC_FILE})
     
     # Add precompiled header support
     target_precompile_headers(${BIN_NAME} PRIVATE ${ARDUINO_CORE_API_HEADER})
-    target_include_directories(${BIN_NAME} PRIVATE "${ARDUINO_CORE_API_DIR}")    
+    target_include_directories(${BIN_NAME} PRIVATE ${ARDUINO_CORE_DIR} "${ARDUINO_CORE_DIR}/cores/ioig" ${ARDUINO_CORE_API_DIR})    
 
     target_link_libraries(${BIN_NAME} ArduinoCore  ${IOIG_HOST_LIB} ${SYS_LIBS}) 
 
     # Set the output directory for the executable
-    set_target_properties(${BIN_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "examples/arduino")    
+    set_target_properties(${BIN_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/examples/arduino)    
 endforeach()

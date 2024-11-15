@@ -21,6 +21,8 @@ namespace ioig
 
             void attachToUsbPort(unsigned usb_port);
 
+            unsigned getUsbPort() { return _usbPort; };
+
                 
         protected:
             unsigned _usbPort;

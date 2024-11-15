@@ -3,16 +3,17 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
-#include <chrono>
+//#include <chrono>
 #include <string>
 #include <sched.h>
 #include <unistd.h>
 #include <cstring>
 
 #include "ioig.h"
+#include "Wire.h"
 
-using namespace ioig;
-using namespace std::chrono_literals;
+//using namespace ioig;
+//using namespace std::chrono_literals;
 
 
 // commands

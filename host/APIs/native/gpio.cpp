@@ -32,7 +32,7 @@ public:
 
             if (_parent._pin == (int)evt_pin && evtFilter != 0 && _eventCallback != nullptr)
             {
-                _eventCallback(evts);
+                _eventCallback(evt_pin, evts, _callbackArg);
             }
         }
     }
@@ -40,6 +40,7 @@ public:
     Gpio & _parent;
     uint32_t _eventMask;
     Gpio::InterruptHandler _eventCallback;
+    void * _callbackArg;
 };
 
 
@@ -257,9 +258,11 @@ unsigned long Gpio::pulseIn(uint8_t state, unsigned long timeout)
     return rxPkt.getPayloadItem64(0);
 }
 
-void Gpio::setInterrupt(const uint32_t events, const InterruptHandler &cbk)
+void Gpio::setInterrupt(const uint32_t events, const InterruptHandler &cbk, void * arg)
 { 
     checkAndInitialize();
+
+    pimpl->_callbackArg = arg;
 
     Packet txPkt(16);
     Packet rxPkt(16);
@@ -276,7 +279,6 @@ void Gpio::setInterrupt(const uint32_t events, const InterruptHandler &cbk)
 
     UsbManager::registerEventHandler( pimpl.get() , _usbPort);
 
-    
     UsbManager::transfer(txPkt, rxPkt, _usbPort);
 
     auto rxp0 = rxPkt.getPayloadItem8(0);
@@ -303,6 +305,8 @@ void Gpio::setInterrupt(const uint32_t events, const InterruptHandler &cbk)
 void Gpio::disableInterrupt()
 {
     checkAndInitialize();
+
+    pimpl->_callbackArg = nullptr;
 
     //TODO: usbDevice.removeEventHandler
 

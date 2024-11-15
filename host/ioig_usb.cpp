@@ -225,7 +225,7 @@ void UsbManager::registerEventHandler(EventHandler * evHandler, int usb_port)
     {
         if (!evHandlerFound) 
         {
-           eventHandlerVec.push_back(evHandler);       
+            eventHandlerVec.push_back(evHandler);       
         }else 
         {
             LOG_WARN(TAG,"Event handler already registered");

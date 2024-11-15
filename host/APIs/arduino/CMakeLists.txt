@@ -1,4 +1,4 @@
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 14) #ArduinoAPI has many isses on C++17
 
 set(PRJ_COMMON_CXXFLAGS -Wall -Wextra -Wno-cast-function-type)
 

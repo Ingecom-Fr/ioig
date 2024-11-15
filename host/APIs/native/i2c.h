@@ -92,23 +92,11 @@ namespace ioig
          *  @returns 0 on success, -1 on NAC, -2 on Timeout, -3 unknown error
          */
         int write(int address, const uint8_t *data, int length, bool nostop = false);
+
+
+        void set_addr(int addr) { _addr = addr; }
+        int get_addr() { return _addr; }
         
-        
-        //Arduino API : TODO: move it to api implementation
-        void begin();    
-        void begin(uint8_t address); //slave
-        void end();  
-        void beginTransmission(uint8_t address);
-        uint8_t endTransmission(bool stopBit);
-        uint8_t endTransmission(void);
-        size_t requestFrom(uint8_t address, size_t len, bool stopBit);
-        size_t requestFrom(uint8_t address, size_t len);
-        size_t write(uint8_t data);
-        size_t write(const uint8_t* data, int len);
-        int read();
-        int peek();
-        void flush();
-        int available();
         
     private:
             

@@ -115,8 +115,10 @@ public:
         echo2.input();
         echo2.mode(PullNone);
 
-        auto evtCallback = [&](const uint32_t events)
-        {
+        auto evtCallback = [&](const int pin, const uint32_t events, void * arg)
+        {            
+            (void)pin;
+            (void)arg;
             switch (events)
             {
             case RiseEdge:
@@ -129,10 +131,13 @@ public:
                 break;
             }
         };
-        echo1.setInterrupt(RiseEdge | FallEdge, evtCallback);
+        echo1.setInterrupt(RiseEdge, evtCallback);
 
-        echo2.setInterrupt(FallEdge, [&](const uint32_t events)
+        echo2.setInterrupt(FallEdge, [&](const int pin, const uint32_t events, void * arg)
         {
+            (void)pin;
+            (void)arg;
+            
             switch (events)
             {
             case RiseEdge:

@@ -80,7 +80,7 @@ namespace ioig
         /**
          * @brief Type definition for interrupt handler function.
          */
-        using InterruptHandler = std::function<void(const uint32_t events)>;
+        using InterruptHandler = std::function<void(const int pin, const uint32_t events, void * arg)>;
 
         /**
          * @brief Default constructor.
@@ -190,7 +190,7 @@ namespace ioig
          * @param events The event mask specifying which events to listen for.
          * @param cbk The callback function invoked on interrupt events.
          */
-        void setInterrupt(const uint32_t events, const InterruptHandler &cbk);
+        void setInterrupt(const uint32_t events, const InterruptHandler &cbk, void * arg=nullptr);
 
         /**
          * @brief Disable interrupts for the GPIO pin.
