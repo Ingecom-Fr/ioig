@@ -122,9 +122,10 @@ TEST(PacketTestSuite, Payload_BasicOperations)
   EXPECT_EQ(packet1.getSeqNum(), 1);
   EXPECT_EQ(packet1.getStatus(), Packet::Status::CMD);
   EXPECT_EQ(packet1.addPayloadItem8(0xAA), 0xAA);
+  EXPECT_FALSE(packet1.isEmpty());
   EXPECT_EQ(packet1.addPayloadItem8(0xBB), 0xBB);  
   EXPECT_EQ(packet1.getPayloadItem8(0) , 0xAA);
-  EXPECT_EQ(packet1.getPayloadItem8(1) , 0xBB);
+  EXPECT_EQ(packet1.getPayloadItem8(1) , 0xBB);    
   EXPECT_EQ(packet1.getPayloadItem8(3) , -1); 
 
   EXPECT_EQ(packet1.getBufferLength() , Packet::getHeaderLength() + packet1.getPayloadLength());
