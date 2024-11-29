@@ -28,10 +28,9 @@ class AnalogIn_TestBench
 {
 public:
     AnalogIn_TestBench()
-     :tempSensor(ioig::AnalogIn(ADC_TEMP,10,4))
+     :tempSensor(std::move(ioig::AnalogIn(ADC_TEMP,10,4)))
     {
         tempSensor.attachToUsbPort(USB_PORT);
-
     }
 
     void run()
@@ -131,7 +130,7 @@ public:
                 break;
             }
         };
-        echo1.setInterrupt(RiseEdge, evtCallback);
+        echo1.setInterrupt(RiseEdge | FallEdge , evtCallback);
 
         echo2.setInterrupt(FallEdge, [&](const int pin, const uint32_t events, void * arg)
         {
@@ -172,7 +171,6 @@ public:
             EXPECT_EQ(event1RiseCnt, event1FallCnt);
 
         });
-
         
 
         auto thread2 = std::thread([&]()

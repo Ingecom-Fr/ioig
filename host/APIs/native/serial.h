@@ -69,11 +69,15 @@ namespace ioig
          */
         Serial(int tx, int rx, int baud = 115200, unsigned hw_instance = 0);
 
-        // Copy constructor
-        Serial(const Serial &other) = default;
+        // Disable Copy Constructor and Copy Assignment
+        Serial(const Serial&) = delete;
+        Serial& operator=(const Serial&) = delete;
 
-        // Assignment operator
-        Serial &operator=(const Serial &other) = default;
+        // Enable Move Constructor
+        Serial(Serial&& other) noexcept;
+    
+        // Enable Move Assignment Operator
+        Serial& operator=(Serial&& other) noexcept;
 
         ~Serial();
 
@@ -171,7 +175,7 @@ namespace ioig
 
         std::unique_ptr<SerialImpl> pimpl; /**< Pointer to implementation. */
 
-        static constexpr char TAG[] = "Serial"; ///< Log tag
+        static constexpr const char* TAG = "Serial"; ///< Log tag
 
     };
 #endif    

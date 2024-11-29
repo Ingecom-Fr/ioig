@@ -11,6 +11,7 @@ TEST(PacketTestSuite, Basics)
   packet1.setType(Packet::Type::NONE);
 
   EXPECT_EQ(packet1.getPayloadLength() ,0);
+  EXPECT_TRUE(packet1.isEmpty());
   EXPECT_EQ(packet1.getBufferLength() ,  Packet::getHeaderLength() + packet1.getPayloadLength());
   EXPECT_EQ(packet1.getBufferSize() , Packet::MAX_SIZE);
   EXPECT_EQ(packet1.getType(), Packet::Type::NONE);

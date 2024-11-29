@@ -44,6 +44,25 @@ public:
 };
 
 
+Gpio::Gpio(Gpio&& other) noexcept
+    : Peripheral(std::move(other)),  // Move base class
+      _pin(other._pin),
+      _dir(other._dir),
+      _mode(other._mode),
+      pimpl(std::move(other.pimpl)) {}
+    
+Gpio& Gpio::operator=(Gpio&& other) noexcept
+{
+    if (this != &other) {
+        Peripheral::operator=(std::move(other)); // Move base class
+        _pin = other._pin;               
+        _dir = other._dir;
+        _mode = other._mode;
+        pimpl = std::move(other.pimpl);        // Transfer ownership of pimpl
+    }
+    return *this;
+}
+
 
 Gpio::Gpio(int pin, int direction, int mode) 
     : _pin(pin),

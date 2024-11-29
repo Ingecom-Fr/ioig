@@ -98,20 +98,15 @@ namespace ioig
          */
         Gpio(int pin, int direction = PinDirection::Output, int mode = PinMode::PullDefault);
 
-        /**
-         * @brief Copy constructor.
-         *
-         * @param other Another Gpio object to copy from.
-         */
-        Gpio(const Gpio& other) = default;
+        
+        // Disable Copy Constructor and Copy Assignment
+        Gpio(const Gpio&) = delete;
+        Gpio& operator=(const Gpio&) = delete;
+    
+        // Enable Move Constructor and Move Assignment
+        Gpio(Gpio&& other) noexcept;
+        Gpio& operator=(Gpio&& other) noexcept;
 
-        /**
-         * @brief Assignment operator.
-         *
-         * @param other Another Gpio object to assign from.
-         * @return Reference to the assigned Gpio object.
-         */
-        Gpio &operator=(const Gpio &other) = default;
 
         /**
          * @brief Destructor.
@@ -207,7 +202,7 @@ namespace ioig
         int _dir;           ///< The direction of the GPIO pin.
         int _mode;          ///< The mode of the GPIO pin.
 
-        static constexpr char TAG[] = "GPIO";  ///< Tag used for logging.
+        static constexpr const char* TAG = "GPIO";  ///< Tag used for logging.
 
         std::unique_ptr<GpioImpl> pimpl;   ///< Pointer to implementation.
     };

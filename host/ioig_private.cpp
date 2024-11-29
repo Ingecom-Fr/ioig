@@ -3,15 +3,12 @@
 
 using namespace ioig;
 
+constexpr unsigned Packet::MAX_SIZE; 
 
-Peripheral::Peripheral() : _usbPort(0)
-{
-   
-}
-
-Peripheral::~Peripheral()
-{
-   
+Peripheral::Peripheral()
+{ 
+    _usbPort = 0;
+    _usbInitMap.reset();
 }
 
 

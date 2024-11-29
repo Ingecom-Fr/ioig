@@ -3,7 +3,7 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
-//#include <chrono>
+#include <chrono>
 #include <string>
 #include <sched.h>
 #include <unistd.h>
@@ -139,7 +139,7 @@ private:
   uint8_t _rows;
   uint8_t _backlightval;
 
-  ioig::I2C Wire; //I2C object
+  //ioig::I2C Wire; //I2C object
 
 };
 

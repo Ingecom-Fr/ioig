@@ -76,6 +76,32 @@ Serial::Serial(int tx, int rx, int baud, unsigned hw_instance):
 }
 
 
+Serial::Serial(Serial&& other) noexcept
+    : Peripheral(std::move(other)),  // Move base class
+    _tx(other._tx),
+    _rx(other._rx),
+    _rts(other._rts),
+    _cts(other._cts),
+    _baud(other._baud),
+    _hwInstance(other._hwInstance),
+      pimpl(std::move(other.pimpl)) {}
+    
+Serial& Serial::operator=(Serial&& other) noexcept
+{
+    if (this != &other) {
+        Peripheral::operator=(std::move(other)); // Move base class
+        _tx = other._tx;
+        _rx = other._rx;
+        _rts = other._rts;
+        _cts = other._cts;
+        _baud = other._baud;
+        _hwInstance = other._hwInstance;
+        pimpl = std::move(other.pimpl);        // Transfer ownership of pimpl
+    }
+    return *this;
+}
+
+
 Serial::~Serial()
 {
     Packet txPkt;

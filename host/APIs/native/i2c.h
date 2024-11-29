@@ -38,12 +38,35 @@ namespace ioig
          */
         I2C(int sda, int scl, unsigned long freq_hz=100000, unsigned hw_instance=0);
 
-        //Copy constructor
-        I2C(const I2C& other) = default;
-        
-        //Assignment operator 
-        I2C &operator=(const I2C &other) = default;
+        // Disable Copy Constructor and Copy Assignment
+        I2C(const I2C&) = delete;
+        I2C& operator=(const I2C&) = delete;
+    
 
+        // Enable Move Constructor
+        I2C(I2C&& other) noexcept
+            : Peripheral(std::move(other)),  // Move base class
+            _sda(other._sda),
+            _scl(other._scl),
+            _freq(other._freq),
+            _addr(other._addr),
+            _hwInstance(other._hwInstance),
+            _timeout(other._timeout) {}
+    
+        // Enable Move Assignment Operator
+        I2C& operator=(I2C&& other) noexcept
+        {
+            if (this != &other) {
+                Peripheral::operator=(std::move(other)); // Move base class
+                _sda = other._sda;
+                _scl = other._scl;
+                _freq = other._freq;
+                _addr = other._addr;
+                _hwInstance = other._hwInstance;
+                _timeout = other._timeout;
+            }
+            return *this;
+        }
 
         ~I2C();
 
@@ -109,7 +132,8 @@ namespace ioig
         int      _hwInstance;
         uint32_t _timeout;
 
-        static constexpr char TAG[] = "I2C";
+        static constexpr const char* TAG = "I2C";
+
     };
 
 }

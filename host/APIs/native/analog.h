@@ -15,26 +15,32 @@ namespace ioig
 
     public:
        
-        /**
-         * @brief Construct AnalogIn object using default settings.
-         */
-        AnalogIn() : AnalogIn(ANALOGIN0) {};
-
-        /** 
-         * @brief Create an AnalogIn connected to the specified pin.
-         *
-         * @param pin The pin to which the AnalogIn is connected.
-         * @param resolution The resolution of the AnalogIn (default is 10).
-         * @param channel The channel of the AnalogIn (default is 0).
-         */
-        AnalogIn(int pin, unsigned resolution=10, unsigned channel=0);
-
-        // Copy constructor
-        AnalogIn(const AnalogIn &) = default;
-
-        // Assignment operator
-        AnalogIn &operator=(const AnalogIn &other) = default;
-
+        AnalogIn() : AnalogIn(ANALOGIN0) {}
+        AnalogIn(int pin, unsigned resolution = 10, unsigned channel = 0);
+    
+        // Disable Copy Constructor and Copy Assignment
+        AnalogIn(const AnalogIn&) = delete;
+        AnalogIn& operator=(const AnalogIn&) = delete;
+    
+        // Enable Move Constructor
+        AnalogIn(AnalogIn&& other) noexcept
+            : Peripheral(std::move(other)),  // Move base class
+              _pin(other._pin),
+              _channel(other._channel),
+              _resolution(other._resolution) {}
+    
+        // Enable Move Assignment Operator
+        AnalogIn& operator=(AnalogIn&& other) noexcept
+        {
+            if (this != &other) {
+                Peripheral::operator=(std::move(other)); // Move base class
+                _pin = other._pin;               
+                _channel = other._channel;
+                _resolution = other._resolution;
+            }
+            return *this;
+        }
+    
         ~AnalogIn();
 
         /** 
@@ -57,7 +63,7 @@ namespace ioig
         int      _pin;         /**< The pin to which the AnalogIn is connected. */
         uint8_t _channel;      /**< The channel of the AnalogIn. */
         uint8_t _resolution;   /**< The resolution of the AnalogIn. */
-        static constexpr char TAG[] = "AnalogIn"; /**< Tag for debugging purposes. */
+        static constexpr const char* TAG = "AnalogIn"; /**< Tag for debugging purposes. */
     };
 
     /**
@@ -68,26 +74,40 @@ namespace ioig
 
     public:
 
-        /**
-         * @brief Construct the AnalogOut object using default pin.
-         */
-        AnalogOut() : AnalogOut(PWM0_A) {};
-
-        /** 
-         * @brief Create an AnalogOut connected to the specified pin.
-         *
-         * @param pin The pin to which the AnalogOut is connected.
-         * @param resolution The resolution of the AnalogOut (default is 8).
-         */
-        AnalogOut(int pin, unsigned resolution=8);
-
-        // Assignment operator
-        AnalogOut &operator=(const AnalogOut &other) = default;
-
-        // Copy constructor
-        AnalogOut(const AnalogOut &) = default;
-
+        AnalogOut() : AnalogOut(PWM0_A) {}
+        AnalogOut(int pin, unsigned resolution = 8);            
+    
+        // Disable Copy Constructor and Copy Assignment
+        AnalogOut(const AnalogOut&) = delete;
+        AnalogOut& operator=(const AnalogOut&) = delete;
+    
+        // Enable Move Constructor
+        AnalogOut(AnalogOut&& other) noexcept
+            : Peripheral(std::move(other)),  // Move base class
+              _pin(other._pin),
+              _resolution(other._resolution),
+              _pwmSlice(other._pwmSlice),
+              _pwmCountTop(other._pwmCountTop),
+              _pwmPercent(other._pwmPercent),
+              _pwmPeriod_us(other._pwmPeriod_us) {}
+    
+        // Enable Move Assignment Operator
+        AnalogOut& operator=(AnalogOut&& other) noexcept
+        {
+            if (this != &other) {
+                Peripheral::operator=(std::move(other)); // Move base class
+                _pin = other._pin;
+                _resolution = other._resolution;
+                _pwmSlice = other._pwmSlice;
+                _pwmCountTop = other._pwmCountTop;
+                _pwmPercent = other._pwmPercent;
+                _pwmPeriod_us = other._pwmPeriod_us;
+            }
+            return *this;
+        }
+    
         ~AnalogOut();
+
 
         /** 
          * @brief Set the output voltage.
@@ -114,7 +134,7 @@ namespace ioig
         float    _pwmPercent;  /**< Percentage for PWM operation. */
         uint64_t _pwmPeriod_us; /**< Period in microseconds for PWM operation. */
 
-        static constexpr char TAG[] = "AnalogOut"; /**< Tag for debugging purposes. */
+        static constexpr const char* TAG = "AnalogOut"; /**< Tag for debugging purposes. */
     };    
 
 } // namespace
