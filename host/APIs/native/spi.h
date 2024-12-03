@@ -71,6 +71,7 @@ namespace ioig
             }
             return *this;
         }
+        
         /**
          * @brief Configure Spi.
          *
@@ -82,6 +83,12 @@ namespace ioig
          * @param order Must be SPI_MSB_FIRST=0, no other values supported on the PL022.
          */
         void format(unsigned data_bits, unsigned cpol = 0, unsigned cpha = 0, unsigned order = 0);
+
+        /**
+         * @brief Set Spi frequency
+         * @param The frequency in Hz
+         */
+        void set_freq(uint32_t freq);
 
         /**
          * @brief Transfer Spi data.

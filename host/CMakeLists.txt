@@ -165,7 +165,7 @@ endforeach()
 #==========================================================
 
 set(EXAMPLES_DIR_ARDUINO ${PRJ_ROOT_DIR}/examples/arduino)
-file(GLOB EXAMPLE_SRCS_ARDUINO ${EXAMPLES_DIR_ARDUINO}/*.cpp)
+file(GLOB_RECURSE EXAMPLE_SRCS_ARDUINO ${EXAMPLES_DIR_ARDUINO}/*.cpp)
 
 #set(ARDUINO_CORE_API_HEADER "${ARDUINO_CORE_API_DIR}/ArduinoAPI.h")
 set(ARDUINO_CORE_API_HEADER "${ARDUINO_CORE_DIR}/cores/ioig/Arduino.h")
@@ -181,7 +181,9 @@ foreach(SRC_FILE ${EXAMPLE_SRCS_ARDUINO})
     
     # Add precompiled header support
     target_precompile_headers(${BIN_NAME} PRIVATE ${ARDUINO_CORE_API_HEADER})
-    target_include_directories(${BIN_NAME} PRIVATE ${ARDUINO_CORE_DIR} "${ARDUINO_CORE_DIR}/cores/ioig" ${ARDUINO_CORE_API_DIR})    
+    target_include_directories(${BIN_NAME} PRIVATE  ${EXAMPLES_DIR_ARDUINO}                                                                                                        
+                                                    "${ARDUINO_CORE_DIR}/cores/ioig" 
+                                                    ${ARDUINO_CORE_API_DIR})    
 
     target_link_libraries(${BIN_NAME} ArduinoCore  ${IOIG_HOST_LIB} ${SYS_LIBS}) 
 

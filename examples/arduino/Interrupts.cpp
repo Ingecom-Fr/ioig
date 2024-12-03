@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 const byte outPin = 12;
 const byte interruptPin = 13;
 volatile byte state = LOW;

@@ -1,19 +1,10 @@
-#include <csignal>
-#include <thread>
-#include <ctime>
-#include <iomanip>
 #include <iostream>
-#include <chrono>
-#include <string>
-#include <sched.h>
 #include <unistd.h>
-#include <cstring>
+#include <inttypes.h>
 
-#include "ioig.h"
-#include "Wire.h"
-
-//using namespace ioig;
-//using namespace std::chrono_literals;
+#include <Arduino.h>
+#include <Print.h> 
+#include <Wire.h>
 
 
 // commands
@@ -62,8 +53,7 @@
 #define Rw 0b00000010  // Read/Write bit
 #define Rs 0b00000001  // Register select bit
 
-class LiquidCrystal_I2C 
-{
+class LiquidCrystal_I2C : public Print {
 public:
   LiquidCrystal_I2C(uint8_t lcd_Addr,uint8_t lcd_cols,uint8_t lcd_rows);
   void begin(uint8_t cols, uint8_t rows, uint8_t charsize = LCD_5x8DOTS );
@@ -89,14 +79,10 @@ public:
   void noAutoscroll(); 
   void createChar(uint8_t, uint8_t[]);
   void createChar(uint8_t location, const char *charmap);
-  int getCols() { return _cols; }
-  int getRows() { return _rows; }
   // Example: 	const char bell[8] PROGMEM = {B00100,B01110,B01110,B01110,B11111,B00000,B00100,B00000};
   
   void setCursor(uint8_t, uint8_t); 
-
   virtual size_t write(uint8_t);
-  size_t print(const char str[]);
 
   void command(uint8_t);
   void init();
@@ -138,23 +124,14 @@ private:
   uint8_t _cols;
   uint8_t _rows;
   uint8_t _backlightval;
-
-  //ioig::I2C Wire; //I2C object
-
 };
 
-#define pgm_read_byte(addr) (*(const unsigned char *)(addr))
-#define pgm_read_word(addr) (*(const unsigned short *)(addr))
-#define pgm_read_dword(addr) (*(const unsigned long *)(addr))
-#define pgm_read_float(addr) (*(const float *)(addr))
-#define pgm_read_ptr(addr) (*(void *const *)(addr))
 
-#define pgm_read_byte_near(addr) pgm_read_byte(addr)
-#define pgm_read_word_near(addr) pgm_read_word(addr)
-#define pgm_read_dword_near(addr) pgm_read_dword(addr)
-#define pgm_read_float_near(addr) pgm_read_float(addr)
-#define pgm_read_ptr_near(addr) pgm_read_ptr(addr)
-
+#define printIIC(args)	Wire.write(args)
+inline size_t LiquidCrystal_I2C::write(uint8_t value) {
+	send(value, Rs);
+	return 1;
+}
 
 
 
@@ -176,24 +153,6 @@ private:
 // Note, however, that resetting the Arduino doesn't reset the LCD, so we
 // can't assume that its in that state when a sketch starts (and the
 // LiquidCrystal constructor is called).
-
-void delay(unsigned long ms)
-{
-    std::this_thread::sleep_for( std::chrono::milliseconds(ms) );
-}
-
-void delayMicroseconds(unsigned int us)
-{
-  std::this_thread::sleep_for( std::chrono::microseconds(us) );
-}
-
-#define printIIC(args)	Wire.write(args)
-
-inline size_t LiquidCrystal_I2C::write(uint8_t value) 
-{
-	send(value, Rs);
-	return 1;
-}
 
 LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr,uint8_t lcd_cols,uint8_t lcd_rows)
 {
@@ -392,20 +351,6 @@ void LiquidCrystal_I2C::backlight(void) {
 	expanderWrite(0);
 }
 
-size_t LiquidCrystal_I2C::print(const char str[])
-{
-    size_t len = strlen(str);
-    for (size_t i=0;i< len ; i++) {
-	  write(str[i]);
-	}
-	return len;
-}
-
-
-void LiquidCrystal_I2C::printstr(const char c[])
-{
-	print(c);
-}
 
 
 /*********** mid level commands, for sending data/cmds */
@@ -421,7 +366,7 @@ inline void LiquidCrystal_I2C::command(uint8_t value) {
 void LiquidCrystal_I2C::send(uint8_t value, uint8_t mode) {
 	uint8_t highnib=value&0xf0;
 	uint8_t lownib=(value<<4)&0xf0;
-    write4bits((highnib)|mode);
+       write4bits((highnib)|mode);
 	write4bits((lownib)|mode); 
 }
 
@@ -475,38 +420,97 @@ void LiquidCrystal_I2C::setBacklight(uint8_t new_val){
 	}
 }
 
+void LiquidCrystal_I2C::printstr(const char c[]){
+	//This function is not identical to the function used for "real" I2C displays
+	//it's here so the user sketch doesn't have to be changed 
+	print(c);
+}
 
-int main() 
+
+// unsupported API functions
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+void LiquidCrystal_I2C::off(){}
+void LiquidCrystal_I2C::on(){}
+void LiquidCrystal_I2C::setDelay (int cmdDelay,int charDelay) {}
+uint8_t LiquidCrystal_I2C::status(){return 0;}
+uint8_t LiquidCrystal_I2C::keypad (){return 0;}
+uint8_t LiquidCrystal_I2C::init_bargraph(uint8_t graphtype){return 0;}
+void LiquidCrystal_I2C::draw_horizontal_graph(uint8_t row, uint8_t column, uint8_t len,  uint8_t pixel_col_end){}
+void LiquidCrystal_I2C::draw_vertical_graph(uint8_t row, uint8_t column, uint8_t len,  uint8_t pixel_row_end){}
+void LiquidCrystal_I2C::setContrast(uint8_t new_val){}
+#pragma GCC diagnostic pop
+	
+
+
+static constexpr int rows=4;
+static constexpr int cols=20;
+
+static LiquidCrystal_I2C lcd(0x27,cols,rows);  // set the LCD address to 0x27 for a 16 chars and 2 line display
+
+static const char * hello_str = "Hello world!";
+static int hello_str_len = 0; 
+
+
+void setup()
 {
 	std::cout << std::unitbuf; // enable automatic flushing
 	std::cerr << std::unitbuf; // enable automatic flushing
         
-    puts("LiquidCrystal_I2C");    
-     
-    fflush(stdout);               
-
-	LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display   
+    puts("LiquidCrystal_I2C");    	
+    fflush(stdout);       	
     lcd.init();                      // initialize the lcd 
 	lcd.backlight();
 	lcd.setCursor(3,0);
+	hello_str_len = strlen(hello_str);
+}
 
-	const char * ingeStr = "INGECOM";
-	int ingeStrlen = strlen(ingeStr);
-	
 
-	while (1) 
+void loop()
+{
+
+	for (int y = 0; y < rows; y++)
 	{
-		for (int y = 0; y < lcd.getRows(); y++)
+		for (int x = 0; x <= cols - hello_str_len; x++)
 		{
-			for (int x = 0; x <= lcd.getCols() - ingeStrlen; x++)
-			{
-				lcd.clear();
-				lcd.setCursor(x, y);
-				lcd.print(ingeStr);
-				delay(600);
-			}
+			lcd.clear();
+			lcd.setCursor(x, y);
+			lcd.print(hello_str);
+			delay(600);
 		}
 	}
-
-	return 0;
 }
+
+
+
+// int main() 
+// {
+
+     
+         
+
+// 	LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display   
+//     lcd.init();                      // initialize the lcd 
+// 	lcd.backlight();
+// 	lcd.setCursor(3,0);
+
+// 	const char * ingeStr = "INGECOM";
+// 	int ingeStrlen = strlen(ingeStr);
+	
+
+// 	while (1) 
+// 	{
+// 		for (int y = 0; y < lcd.getRows(); y++)
+// 		{
+// 			for (int x = 0; x <= lcd.getCols() - ingeStrlen; x++)
+// 			{
+// 				lcd.clear();
+// 				lcd.setCursor(x, y);
+// 				lcd.print(ingeStr);
+// 				delay(600);
+// 			}
+// 		}
+// 	}
+
+// 	return 0;
+// }

@@ -130,4 +130,6 @@ extern ErrorSerialClass ErrorSerial;
 
 #include "macros.h"
 
+#include "ioig.h"
+
 #endif

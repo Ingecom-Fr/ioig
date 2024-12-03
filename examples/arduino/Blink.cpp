@@ -1,5 +1,6 @@
-#define LED_PIN 13
+#include <Arduino.h>
 
+#define LED_PIN 13
 
 // the setup function runs once when you press reset or power the board
 void setup() {
