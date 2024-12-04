@@ -31,7 +31,7 @@ private:
     void processSetBaud(Packet & rxPkt, Packet & txPkt);
     void processSetFormat(Packet & rxPkt, Packet & txPkt);
     void processSetIrq(Packet & rxPkt, Packet & txPkt);
-    void processSeFlowControl(Packet & rxPkt, Packet & txPkt);
+    void processSetFlowControl(Packet & rxPkt, Packet & txPkt);
     void processReadable(Packet & rxPkt, Packet & txPkt);
     void processWritable(Packet & rxPkt, Packet & txPkt);
     void processSetBreak(Packet & rxPkt, Packet & txPkt);

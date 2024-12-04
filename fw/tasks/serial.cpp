@@ -163,7 +163,7 @@ inline void SerialTask::processSetIrq(Packet & rxPkt, Packet & txPkt)
     txPkt.addPayloadItem8(irq);
 }
 
-inline void SerialTask::processSeFlowControl(Packet & rxPkt, Packet & txPkt)
+inline void SerialTask::processSetFlowControl(Packet & rxPkt, Packet & txPkt)
 {
     auto hwInstance = rxPkt.getPayloadItem8(0) == UART_0 ? uart0 : uart1; 
     auto pin_rts   = rxPkt.getPayloadItem8(1);
@@ -309,7 +309,7 @@ void SerialTask::process(Packet &rxPkt,Packet &txPkt)
         processSetIrq(rxPkt,txPkt);
     break;
     case Packet::Type::SERIAL_SET_FLOW_CONTROL:
-        processSeFlowControl(rxPkt,txPkt);
+        processSetFlowControl(rxPkt,txPkt);
     break;
     case Packet::Type::SERIAL_READABLE:
         processReadable(rxPkt,txPkt);

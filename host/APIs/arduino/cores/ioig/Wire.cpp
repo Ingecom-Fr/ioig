@@ -51,7 +51,7 @@ namespace arduino
     IoIgI2C::IoIgI2C(int sda, int scl)
     {
         pimpl = std::make_unique<IoIgI2CImpl>(*this);
-        pimpl->master = new ioig::I2C(sda, scl);
+        pimpl->master = new ioig::I2C(sda, scl); //TODO: need it here?
         pimpl->sda = sda;
         pimpl->scl = scl;
     }

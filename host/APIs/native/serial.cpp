@@ -84,7 +84,7 @@ Serial::Serial(Serial&& other) noexcept
     _cts(other._cts),
     _baud(other._baud),
     _hwInstance(other._hwInstance),
-      pimpl(std::move(other.pimpl)) {}
+    pimpl(std::move(other.pimpl)) {}
     
 Serial& Serial::operator=(Serial&& other) noexcept
 {
