@@ -2,9 +2,26 @@ import socket
 import time
 import argparse
 
-# Default values
-DEFAULT_MESSAGE = "Test message"
-UDP_IP = "192.0.2.1"
+# Default message value
+DEFAULT_MESSAGE = (
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+    "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+    "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+    "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:'\",.<>?/\\"    
+)
+
+#max=512
+MSG_SIZE=64
+
+# Ensure the message is exactly MSG_SIZE bytes
+if len(DEFAULT_MESSAGE) > MSG_SIZE:
+    DEFAULT_MESSAGE = DEFAULT_MESSAGE[:MSG_SIZE]
+elif len(DEFAULT_MESSAGE) < MSG_SIZE:
+    DEFAULT_MESSAGE += " " * (MSG_SIZE - len(DEFAULT_MESSAGE))  
+
+DEV_IP = "192.0.2.1"
 UDP_PORT = 5001
 TCP_PORT = 5002
 
@@ -13,7 +30,7 @@ def measure_udp_rtt(message):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.settimeout(1)  # Timeout for response
     start_time = time.time()  # Record start time
-    sock.sendto(message.encode(), (UDP_IP, UDP_PORT))  # Send message
+    sock.sendto(message.encode(), (DEV_IP, UDP_PORT))  # Send message
 
     try:
         data, addr = sock.recvfrom(1024)  # Wait for response
@@ -32,7 +49,7 @@ def measure_tcp_rtt(message):
     sock.settimeout(1)  # Timeout for response
 
     try:
-        sock.connect((UDP_IP, TCP_PORT))  # Connect to the server
+        sock.connect((DEV_IP, TCP_PORT))  # Connect to the server
         start_time = time.time()  # Record start time
         sock.sendall(message.encode())  # Send message
 

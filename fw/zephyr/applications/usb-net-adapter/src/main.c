@@ -241,6 +241,15 @@ void udp_echo_thread(void *arg1, void *arg2, void *arg3) {
 
     /* Create UDP socket */
     sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+
+    //parameters
+    // int buf_size = 2048;
+    // setsockopt(sock, SOL_SOCKET, SO_RCVBUF, &buf_size, sizeof(buf_size));
+    // setsockopt(sock, SOL_SOCKET, SO_SNDBUF, &buf_size, sizeof(buf_size));
+    // int window_size = 4096; // Adjust as needed
+    // setsockopt(sock, SOL_SOCKET, SO_RCVBUF, &window_size, sizeof(window_size));
+    // setsockopt(sock, SOL_SOCKET, SO_SNDBUF, &window_size, sizeof(window_size));    
+
     if (sock < 0) {
         printk("UDP: Failed to create socket: %d\n", errno);
         return;
@@ -259,19 +268,18 @@ void udp_echo_thread(void *arg1, void *arg2, void *arg3) {
                                       (struct sockaddr *)&client_addr, &client_addr_len);
         if (received_bytes < 0) {
             printk("UDP Receive failed: %d\n", errno);
-            k_msleep(5000);
             continue;
         }
 
-        printk("UDP Received %d bytes: %.*s\n", received_bytes, received_bytes, recv_buffer);
+        //printk("UDP Received %d bytes: %.*s\n", received_bytes, received_bytes, recv_buffer);
 
         /* Echo back the received data */
         int sent_bytes = sendto(sock, recv_buffer, received_bytes, 0,
                                 (struct sockaddr *)&client_addr, client_addr_len);
-        if (sent_bytes < 0) {
-            printk("UDP Echo failed: %d\n", errno);
+        if (sent_bytes > 0) {
+            //printk("UDP Echoed %d bytes\n", sent_bytes);            
         } else {
-            printk("UDP Echoed %d bytes\n", sent_bytes);
+            printk("UDP Echo failed: %d\n", errno);
         }
     }
 
@@ -316,12 +324,10 @@ void tcp_echo_thread(void *arg1, void *arg2, void *arg3) {
         /* Accept incoming connection */
         client_sock = accept(server_sock, (struct sockaddr *)&client_addr, &client_addr_len);
         if (client_sock < 0) {
-            printk("TCP Accept failed: %d\n", errno);
-            k_msleep(5000);
+            printk("TCP Accept failed: %d\n", errno);            
             continue;
         }
-
-        printk("TCP: Client connected\n");
+        
 
         /* Echo data back to the client */
         while (1) {
@@ -331,11 +337,11 @@ void tcp_echo_thread(void *arg1, void *arg2, void *arg3) {
                 break;
             }
             if (received_bytes == 0) {
-                printk("TCP: Client disconnected\n");
+                //printk("TCP: Client disconnected\n");
                 break;
             }
 
-            printk("TCP Received %d bytes: %.*s\n", received_bytes, received_bytes, recv_buffer);
+            //printk("TCP Received %d bytes: %.*s\n", received_bytes, received_bytes, recv_buffer);
 
             int sent_bytes = send(client_sock, recv_buffer, received_bytes, 0);
             if (sent_bytes < 0) {
@@ -343,7 +349,7 @@ void tcp_echo_thread(void *arg1, void *arg2, void *arg3) {
                 break;
             }
 
-            printk("TCP Echoed %d bytes\n", sent_bytes);
+            //printk("TCP Echoed %d bytes\n", sent_bytes);
         }
 
         close(client_sock);

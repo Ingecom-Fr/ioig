@@ -13,6 +13,7 @@ find_path(PICO_SDK_PATH
         ${USER_HOME}/pico-sdk
         ${USER_HOME}/workspace/pico-sdk
         ${USER_HOME}/develzone/SDKs/pico-sdk
+        ${USER_HOME}/develspace/SDKs/pico-sdk
         ${USER_HOME}/devel/pico-sdk
         /opt/pico-sdk
         /z/SDKs/pico-sdk

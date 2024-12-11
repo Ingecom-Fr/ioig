@@ -353,12 +353,21 @@ int UsbManager::transfer(Packet &txPkt, Packet &rxPkt, int usb_port, unsigned ti
 
     int retry = 4;
     while (retry-- > 0) 
-    {                           
+    {              
+        auto startTime = std::chrono::high_resolution_clock::now();             
+
         txRet = sendPacket(txPkt, CDC_DATA_EP_OUT, usb_port, timeout_ms);
         rxRet = recvPacket(rxPkt, CDC_DATA_EP_IN, usb_port, timeout_ms);       
+ 
+        // End timing
+        auto endTime = std::chrono::high_resolution_clock::now();
+        auto roundTripTime = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
+
+
 
         if (rxRet > 0 && txRet > 0) 
         {
+            printf("Round trip time: %ld us\n", roundTripTime);
             break; //success
         } 
         
