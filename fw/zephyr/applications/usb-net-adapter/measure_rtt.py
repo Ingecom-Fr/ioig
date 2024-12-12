@@ -12,8 +12,8 @@ DEFAULT_MESSAGE = (
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:'\",.<>?/\\"    
 )
 
-#max=512
-MSG_SIZE=64
+# message size,  max=512
+MSG_SIZE = 64
 
 # Ensure the message is exactly MSG_SIZE bytes
 if len(DEFAULT_MESSAGE) > MSG_SIZE:
@@ -26,38 +26,37 @@ UDP_PORT = 5001
 TCP_PORT = 5002
 
 def measure_udp_rtt(message):
-    """Measure Round-Trip Time for UDP."""
+    """Measure Round-Trip Time for UDP using time_ns()."""
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.settimeout(1)  # Timeout for response
-    start_time = time.time()  # Record start time
-    sock.sendto(message.encode(), (DEV_IP, UDP_PORT))  # Send message
-
     try:
+        start_time = time.time_ns()  # Record start time in nanoseconds
+        sock.sendto(message.encode(), (DEV_IP, UDP_PORT))  # Send message
         data, addr = sock.recvfrom(1024)  # Wait for response
-        end_time = time.time()  # Record end time
-        rtt = (end_time - start_time) * 1000  # Convert to milliseconds
+        end_time = time.time_ns()  # Record end time in nanoseconds
+        rtt_us = (end_time - start_time) / 1000  # Convert to microseconds
         print(f"Response: {data.decode()}")
-        print(f"Round Trip Time: {rtt:.2f} ms")
+        print(f"Round Trip Time: {rtt_us:.2f} µs")
     except socket.timeout:
         print("No response received (timeout)")
     finally:
         sock.close()
 
 def measure_tcp_rtt(message):
-    """Measure Round-Trip Time for TCP."""
+    """Measure Round-Trip Time for TCP using time_ns()."""
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.settimeout(1)  # Timeout for response
 
     try:
         sock.connect((DEV_IP, TCP_PORT))  # Connect to the server
-        start_time = time.time()  # Record start time
+        start_time = time.time_ns()  # Record start time in nanoseconds
         sock.sendall(message.encode())  # Send message
 
         data = sock.recv(1024)  # Wait for response
-        end_time = time.time()  # Record end time
-        rtt = (end_time - start_time) * 1000  # Convert to milliseconds
+        end_time = time.time_ns()  # Record end time in nanoseconds
+        rtt_us = (end_time - start_time) / 1000  # Convert to microseconds
         print(f"Response: {data.decode()}")
-        print(f"Round Trip Time: {rtt:.2f} ms")
+        print(f"Round Trip Time: {rtt_us:.2f} µs")
     except socket.timeout:
         print("No response received (timeout)")
     except ConnectionRefusedError:
