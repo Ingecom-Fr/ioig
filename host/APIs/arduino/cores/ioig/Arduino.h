@@ -101,7 +101,7 @@ extern analogin_config_t adcCurrentConfig;
 #endif
 
 //TODO:
-//#include "Serial.h"
+#include "Serial.h"
 //#include "timer.h"
 #if defined(SERIAL_CDC)
 #define Serial _UART_USB_
@@ -111,8 +111,6 @@ extern analogin_config_t adcCurrentConfig;
 #endif
 #define Serial1 _UART1_
 #define Serial2 _UART2_
-#define Serial3 _UART3_
-#define Serial4 _UART4_
 
 #if defined(RPC_SERIAL)
 #undef Serial

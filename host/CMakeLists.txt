@@ -19,7 +19,7 @@ include(FetchContent)
 add_compile_definitions(IOIG_HOST)
 
 #these variables are not used here, cache them
-set(BUILD_IOIG_FW CACHE INTERNAL "")
+set(IOIG_FW CACHE INTERNAL "")
 set(PICO_SDK_PATH CACHE INTERNAL "")
 set(FW_DIR CACHE INTERNAL "")
 
@@ -108,7 +108,7 @@ endif()
 # Build tests dir
 #==========================================================
 
-if(BUILD_IOIG_TESTS)
+if(IOIG_TESTS)
     #===========================================
     #Google Test Framework
     #===========================================

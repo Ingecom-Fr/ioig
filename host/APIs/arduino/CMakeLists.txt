@@ -27,6 +27,9 @@ set(SOURCE_FILES "${SRCS_1}" "${SRCS_2}")
 include_directories(${SRC_DIR1})
 include_directories(${SRC_DIR2})
 
+
 set(ARDUINO_API_LIB ArduinoCore)
 add_library(${ARDUINO_API_LIB} STATIC ${SOURCE_FILES})
+target_link_libraries(${ARDUINO_API_LIB} PRIVATE)
+
 install(TARGETS ${ARDUINO_API_LIB} DESTINATION lib)

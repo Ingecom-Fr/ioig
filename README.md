@@ -76,7 +76,7 @@ cd ~/ #default folder, change it if needed
 git clone https://github.com/Ingecom-Fr/ioig.git
 cd ioig
 mkdir build && cd build
-cmake -G "Unix Makefiles" -DBUILD_IOIG_FW=1 -DBUILD_IOIG_TESTS=1 ..
+cmake -G "Unix Makefiles" -DIOIG_FW=1 -DIOIG_TESTS=1 ..
 make
 ~~~
 
@@ -122,7 +122,7 @@ cd ~/ #default folder, change it if needed
 git clone https://github.com/Ingecom-Fr/ioig.git
 cd ioig
 mkdir build && cd build
-cmake -G "Unix Makefiles" -DBUILD_IOIG_FW=1 -DBUILD_IOIG_TESTS=1 ..
+cmake -G "Unix Makefiles" -DIOIG_FW=1 -DIOIG_TESTS=1 ..
 make
 ~~~
 
@@ -190,7 +190,7 @@ cd ~/ #default folder, change it if needed
 git clone https://github.com/Ingecom-Fr/ioig.git
 cd ioig
 mkdir build && cd build
-cmake -G "Unix Makefiles" -DBUILD_IOIG_FW=1 -DBUILD_IOIG_TESTS=1 ..
+cmake -G "Unix Makefiles" -DIOIG_FW=1 -DIOIG_TESTS=1 ..
 make
 ~~~
 

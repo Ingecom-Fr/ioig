@@ -42,14 +42,14 @@ namespace ioig
     } FlowControl;
 
 #ifdef IOIG_HOST   
-    class SerialImpl;
+    class UARTImpl;
 
     /**
-     * @brief Serial communication interface class.
+     * @brief UART communication interface class.
      */
-    class Serial : public Peripheral
+    class UART : public Peripheral
     {
-    friend class SerialImpl;
+    friend class UARTImpl;
         
     public:
         using InterruptHandler = std::function<void(const char evtData)>; /**< Type for interrupt handler function pointer. */
@@ -58,28 +58,28 @@ namespace ioig
          * @brief Default constructor.
          *        Builds object using default UART pinout.
          */
-        Serial() : Serial(UART0_PINOUT0) {}; 
+        UART() : UART(UART0_PINOUT0) {}; 
 
         /**
-         * @brief Constructor to create a Serial port.
+         * @brief Constructor to create a UART port.
          * @param tx Transmit pin.
          * @param rx Receive pin.
          * @param baud The baud rate of the serial port (defaults 115200).
          * @param hw_instance Hardware instance.
          */
-        Serial(int tx, int rx, int baud = 115200, unsigned hw_instance = 0);
+        UART(int tx, int rx, int baud = 115200, unsigned hw_instance = 0);
 
         // Disable Copy Constructor and Copy Assignment
-        Serial(const Serial&) = delete;
-        Serial& operator=(const Serial&) = delete;
+        UART(const UART&) = delete;
+        UART& operator=(const UART&) = delete;
 
         // Enable Move Constructor
-        Serial(Serial&& other) noexcept;
+        UART(UART&& other) noexcept;
     
         // Enable Move Assignment Operator
-        Serial& operator=(Serial&& other) noexcept;
+        UART& operator=(UART&& other) noexcept;
 
-        ~Serial();
+        ~UART();
 
         /**
          * @brief Set the baud rate of the serial port.
@@ -173,9 +173,9 @@ namespace ioig
         int _baud;          /**< Baud rate. */
         int _hwInstance;    /**< Hardware instance. */
 
-        std::unique_ptr<SerialImpl> pimpl; /**< Pointer to implementation. */
+        std::unique_ptr<UARTImpl> pimpl; /**< Pointer to implementation. */
 
-        static constexpr const char* TAG = "Serial"; ///< Log tag
+        static constexpr const char* TAG = "UART"; ///< Log tag
 
     };
 #endif    

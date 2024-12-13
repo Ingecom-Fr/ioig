@@ -26,7 +26,7 @@ set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/install)
 # ---------------------------------------------------------
 # Firmware
 # ---------------------------------------------------------
-if(BUILD_IOIG_FW)
+if(IOIG_FW)
     set(PICO_BOARD ${PICO_BOARD} CACHE STRING "Pico board type")
     
     if(NOT DEFINED PICO_BOARD OR PICO_BOARD STREQUAL "")
@@ -50,7 +50,10 @@ if(BUILD_IOIG_FW)
             DOWNLOAD_COMMAND ""
             GIT_REPOSITORY "" 
             GIT_TAG ""
-            CMAKE_ARGS -DPICO_BOARD=${PICO_BOARD} -DPRJ_ROOT_DIR=${PRJ_ROOT_DIR} -DHOST_DIR=${HOST_DIR}
+            CMAKE_ARGS -DPICO_BOARD=${PICO_BOARD} 
+                       -DPRJ_ROOT_DIR=${PRJ_ROOT_DIR} 
+                       -DHOST_DIR=${HOST_DIR} 
+                       -DPICOTOOL_FETCH_FROM_GIT_PATH=${PRJ_ROOT_DIR}/build.tools/picotool
     )
 endif()
 

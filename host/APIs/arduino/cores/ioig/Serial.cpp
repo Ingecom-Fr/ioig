@@ -10,6 +10,10 @@
 #include "ioig_private.h"
 #include "RingBuffer.h"
 
+#ifdef Serial
+#undef Serial
+#endif
+
 namespace arduino
 {
 
@@ -21,13 +25,10 @@ namespace arduino
 
         UART &_parent;
 		void on_rx(const char evtData);
-		void block_tx(int);
-		bool _block;
 		const size_t WRITE_BUFF_SZ = 32;
-		ioig::Serial* _serial = nullptr;
+		ioig::UART* _serial = nullptr;
 		int _tx, _rx, _rts, _cts;
 		RingBufferN<ioig::Packet::MAX_SIZE> rx_buffer;
-		uint8_t intermediate_buf[4];
         int _hw_instance=0;
     };
 
@@ -40,7 +41,12 @@ namespace arduino
     			rx_buffer.store_char(evtData);
     		}		
     	}
-    }    
+    }  
+
+    UART::UART()
+	{
+		//TODO: USB-CDC
+	}
 
     UART::UART(int tx, int rx, int rts, int cts,unsigned hw_instance)
     {
@@ -50,8 +56,7 @@ namespace arduino
         pimpl->_rts = rts;
         pimpl->_cts = cts;
         pimpl->_hw_instance = hw_instance;        
-    }
-    
+    }    
 
     UART::~UART()
     {                
@@ -62,7 +67,7 @@ namespace arduino
 
     	if (pimpl->_serial == nullptr) 
         {
-            pimpl->_serial = new ioig::Serial(pimpl->_tx,pimpl->_rx,baudrate,pimpl->_hw_instance);
+            pimpl->_serial = new ioig::UART(pimpl->_tx,pimpl->_rx,baudrate,pimpl->_hw_instance);
     	}
     	if (pimpl->_rts != NC) {
             pimpl->_serial->setFlowControl(ioig::FlowControl::FlowControlRTSCTS, pimpl->_rts, pimpl->_cts);		
@@ -90,11 +95,6 @@ namespace arduino
     		case SERIAL_DATA_8:
     			bits = 8;
     			break;
-    /*
-    		case SERIAL_DATA_9:
-    			bits = 9;
-    			break;
-    */
     	}
 
     	switch (config & SERIAL_STOP_BIT_MASK) {
@@ -132,6 +132,61 @@ namespace arduino
     	}
     }    
 
+    void UART::end() 
+	{
+    	if (pimpl->_serial != nullptr) 
+		{
+    		delete pimpl->_serial;
+    		pimpl->_serial = nullptr;
+    	}
+    	pimpl->rx_buffer.clear();
+    }
+
+    int UART::available() {
+    	int c = pimpl->rx_buffer.available();
+    	return c;
+    }
+
+    int UART::peek() {
+    	int c = pimpl->rx_buffer.peek();
+    	return c;
+    }
+
+	int UART::read() 
+	{
+		int c = pimpl->rx_buffer.read_char();
+		return c;
+	}
+
+    void UART::flush() 
+    {
+    	while(!pimpl->_serial->writeable());
+    }
+
+    size_t UART::write(uint8_t c) 
+    {
+		printf("%c", c);
+    	int ret = pimpl->_serial->write(&c, 1);
+    	return ret == -1 ? 0 : 1;
+    }	
+
+    size_t UART::write(const uint8_t* c, size_t len) 
+    {
+		printf("%.*s", (int)len, c);
+    	while (!pimpl->_serial->writeable()) {}
+    	//pimpl->_serial->set_blocking(true);
+    	int ret = pimpl->_serial->write(c, len);
+    	return ret == -1 ? 0 : len;
+    }
+
+    UART::operator bool() {
+    	return pimpl->_serial != nullptr;
+    }	
 
 
 }//namespace
+
+
+arduino::UART _UART1_(GP0, GP1,-1,-1,0);
+arduino::UART _UART2_(GP4, GP5,-1,-1,1);
+

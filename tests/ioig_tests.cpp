@@ -292,7 +292,7 @@ class SerialTestBench
 {
 public:
     SerialTestBench()
-        : serial(ioig::Serial(UART1_PINOUT1, 115200, UART_1))
+        : serial(ioig::UART(UART1_PINOUT1, 115200, UART_1))
     {
         // Populate the array with printable ASCII characters
         for (int i = 32; i <= 126; ++i) {
@@ -321,7 +321,7 @@ public:
         }        
     }
    
-    ioig::Serial serial;        
+    ioig::UART serial;        
     static constexpr unsigned BUFF_SIZE = 256;
     char printableAsciiTable[95];
     uint8_t rxBuf[BUFF_SIZE] = {0};
