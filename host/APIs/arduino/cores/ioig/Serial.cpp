@@ -14,8 +14,8 @@
 #undef Serial
 #endif
 
-arduino::UART _UART1_(GP0, GP1, -1, -1, 0);
-arduino::UART _UART2_(GP4, GP5, -1, -1, 1);
+arduino::UART _UART1_(GP0, GP1, NC, NC, UART_0);
+arduino::UART _UART2_(GP4, GP5, NC, NC, UART_1);
 
 using namespace arduino;
 
@@ -62,6 +62,7 @@ UART::UART(int tx, int rx, int rts, int cts, unsigned hw_instance)
 
 UART::~UART()
 {
+	end();
 }
 
 void UART::begin(unsigned long baudrate)
@@ -69,6 +70,7 @@ void UART::begin(unsigned long baudrate)
 	if (pimpl->_serial == nullptr)
 	{
 		pimpl->_serial = new ioig::UART(pimpl->_tx, pimpl->_rx, baudrate, pimpl->_hw_instance);
+		pimpl->_serial->checkAndInitialize();
 	}
 	if (pimpl->_rts != NC)
 	{
@@ -76,8 +78,11 @@ void UART::begin(unsigned long baudrate)
 	}
 	if (pimpl->_serial != nullptr)
 	{
-		pimpl->_serial->setInterrupt([this](const char evtData)
-									 { this->pimpl->on_rx(evtData); });
+		pimpl->_serial->setInterrupt([this](const char c)
+									 { 
+										printf("evt data=%c\n",c);
+										this->pimpl->on_rx(c); 									 
+									 });
 	}
 }
 
@@ -138,6 +143,15 @@ void UART::end()
 {
 	if (pimpl->_serial != nullptr)
 	{
+        pimpl->_serial->checkAndInitialize();
+
+        ioig::Packet txPkt(4);
+        ioig::Packet rxPkt(4);
+
+        txPkt.setType(ioig::Packet::Type::SERIAL_DEINIT);
+
+        ioig::UsbManager::transfer(txPkt, rxPkt, pimpl->_serial->getUsbPort());
+
 		delete pimpl->_serial;
 		pimpl->_serial = nullptr;
 	}
@@ -171,18 +185,28 @@ void UART::flush()
 size_t UART::write(uint8_t c)
 {
 	printf("%c", c);
-	int ret = pimpl->_serial->write(&c, 1);
+	//int ret = pimpl->_serial->write(&c, 1);
+	int ret = pimpl->_serial->putc(c);
 	return ret == -1 ? 0 : 1;
 }
 
-size_t UART::write(const uint8_t *c, size_t len)
+size_t UART::write(const uint8_t *buf, size_t len)
 {
-	printf("%.*s", (int)len, c);
-	while (!pimpl->_serial->writeable())
-	{
-	}
-	// pimpl->_serial->set_blocking(true);
-	int ret = pimpl->_serial->write(c, len);
+
+	printf("%.*s", (int)len, buf);
+	while (!pimpl->_serial->writeable()) 
+	           ;
+	
+	int ret = pimpl->_serial->write(buf, len);
+	//  int ret=0;
+
+	// for (size_t i=0; i < len; i++) 
+	// {
+	// 	ret = pimpl->_serial->putc(buf[i]);				
+	// 	if (ret < 0) break;
+	// }
+
+
 	return ret == -1 ? 0 : len;
 }
 

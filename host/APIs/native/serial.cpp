@@ -15,24 +15,37 @@ namespace ioig
 
         void onEvent(Packet &eventPkt) override
         {
-            auto pktType = eventPkt.getType();
+            // auto pktType = eventPkt.getType();
 
+            // if (pktType != Packet::Type::SERIAL_EVENT)
+            // {
+            //     return;
+            // }
+
+            // auto hwInstance = eventPkt.getPayloadItem8(0);
+
+            // if (hwInstance != _parent._hwInstance)
+            // {
+            //     return;
+            // }
+
+            // if (_eventCallback != nullptr)
+            // {
+            //     _eventCallback((char)eventPkt.getPayloadItem8(1));
+            // }
+
+            int event_cnt = eventPkt.getPayloadItem8(0);
+            auto pktType = eventPkt.getType();
+    
             if (pktType != Packet::Type::SERIAL_EVENT)
             {
                 return;
             }
-
-            auto hwInstance = eventPkt.getPayloadItem8(0);
-
-            if (hwInstance != _parent._hwInstance)
-            {
-                return;
-            }
-
-            if (_eventCallback != nullptr)
-            {
-                _eventCallback((char)eventPkt.getPayloadItem8(1));
-            }
+    
+            for (int i = 1; i < event_cnt; i++)
+            {                
+                _eventCallback((char)eventPkt.getPayloadItem8(i));
+            }            
         }
 
         UART &_parent;
@@ -115,7 +128,7 @@ namespace ioig
         auto txp0 = txPkt.addPayloadItem8(_hwInstance);
         auto txp1 = txPkt.addPayloadItem8(_tx);
         auto txp2 = txPkt.addPayloadItem8(_rx);
-        auto txp3 = txPkt.addPayloadItem32(115200);
+        auto txp3 = txPkt.addPayloadItem32(_baud);
 
         UsbManager::transfer(txPkt, rxPkt, _usbPort);
 
