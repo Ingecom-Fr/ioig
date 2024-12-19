@@ -119,7 +119,7 @@ inline void GpioTask::processEvents(Packet &txPkt)
 {        
     uint8_t qsz = (uint8_t)queue_get_level(&gpioTask._irqEventQueue);   
 
-    int evt_cnt = qsz < EVT_QUEUE_MAX_SIZE ? qsz : EVT_QUEUE_MAX_SIZE-1 /*evt_cnt slot*/;
+    int evt_cnt = qsz < txPkt.getFreePayloadSlots() ? qsz : txPkt.getFreePayloadSlots()-1 /*env_cnt slot*/;
 
     if (evt_cnt == 0) 
     {

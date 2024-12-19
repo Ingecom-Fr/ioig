@@ -52,7 +52,7 @@ namespace ioig
     friend class UARTImpl;
         
     public:
-        using InterruptHandler = std::function<void(const char evtData)>; /**< Type for interrupt handler function pointer. */
+        using InterruptHandler = std::function<void(const char * data, size_t len)>; /**< Type for interrupt handler function pointer. */
 
         /**
          * @brief Default constructor.

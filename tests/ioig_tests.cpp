@@ -299,11 +299,13 @@ public:
             printableAsciiTable[i - 32] = static_cast<char>(i);
         }
 
-        rxCnt = 0;
-        serial.setInterrupt([&](const char evtData)
-        {
-            rxBuf[rxCnt++] = evtData;        
-        });        
+        serial.setInterrupt([&](const char * data, size_t len)
+        {  
+            for (size_t i=0; i < len ; i++) {
+                rxVec.push_back(data[i]);   
+            }
+        });         
+      
     }
 
     void run()
@@ -312,20 +314,33 @@ public:
         for (size_t i = 0; i < sizeof(printableAsciiTable) ; i++)
         {            
             serial.putc(printableAsciiTable[i]);                                       
-            WAIT_MS(1);
         }
 
+        WAIT_MS(250); //wait aync data arrival from interrupt handler
+
         for (size_t i = 0; i < sizeof(printableAsciiTable) ; i++)
+        {   
+            EXPECT_EQ(rxVec[i],printableAsciiTable[i]);
+        }  
+
+        const int data_len = 50;
+        rxVec.clear(); //clear rx data
+        EXPECT_TRUE(rxVec.empty());
+        
+        //write new data in one shot
+        serial.write((uint8_t *)printableAsciiTable,data_len);
+        WAIT_MS(250); //wait aync data arrival from interrupt handler
+        
+        //check received
+        for (size_t i = 0; i < data_len ; i++)
         {                                    
-            EXPECT_EQ(rxBuf[i],printableAsciiTable[i]);
-        }        
+            EXPECT_EQ(rxVec[i],printableAsciiTable[i]);
+        }          
     }
    
     ioig::UART serial;        
-    static constexpr unsigned BUFF_SIZE = 256;
     char printableAsciiTable[95];
-    uint8_t rxBuf[BUFF_SIZE] = {0};
-    int rxCnt;
+    std::vector<char> rxVec;
 };
 
 

@@ -41,16 +41,13 @@ private:
     void processRead(Packet & rxPkt, Packet & txPkt);
     void processEvents(Packet & txPkt);
 
-
     void onRxInterrupt(uart_inst_t *uart_port);
     static void irqHandlerUART0_Rx(void);
     static void irqHandlerUART1_Rx(void);
 
-    // char     _irqRxC[2]; //UART0, UART1
-    // bool     _rxReady[2];     
     queue_t  _irqEventQueue[UART_INSTANCES];    
-    static constexpr uint8_t EVT_QUEUE_MAX_SIZE=32;           
-    critical_section_t _critSection;	
+    static constexpr uint8_t EVT_QUEUE_MAX_SIZE=60;     
+
 
 };
 

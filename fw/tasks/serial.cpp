@@ -10,17 +10,11 @@ SerialTask &serialTask = SerialTask::instance();
 
 SerialTask::SerialTask()
 {
-    // _rxReady[0] = false;
-    // _rxReady[1] = false;
 }
 
 
 void SerialTask::init()
-{
-    // _rxReady[0] = false;
-    // _rxReady[1] = false;
-    queue_init(&_irqEventQueue[UART_0], sizeof(char), EVT_QUEUE_MAX_SIZE);    
-    queue_init(&_irqEventQueue[UART_1], sizeof(char), EVT_QUEUE_MAX_SIZE);    
+{ 
     setState(Task::State::RUNNING);
 }
 
@@ -28,8 +22,6 @@ void SerialTask::reset()
 {
     auto prevState = getState();
     setState(Task::State::STOPPED);    
-    // _rxReady[0] = false;
-    // _rxReady[1] = false;    
     sleep_ms(2); 
     for (int q=0; q < UART_INSTANCES ; q++) 
     {
@@ -48,28 +40,21 @@ void SerialTask::onRxInterrupt(uart_inst_t *uart_port)
     if (getStateUnsafe() == Task::State::STOPPED)
     {
       return;
-    }    
-    int idx = uart_port == uart0 ? UART_0 : UART_1;
+    }     
 
     if (uart_is_readable(uart_port)) 
-    {
-    
-    // critical_section_enter_blocking(&serialTask._critSection);	       
-    //    _rxReady[idx] = true;
-    //    _irqRxC[idx] = uart_getc(uart_port);
-    // critical_section_exit(&serialTask._critSection);
-
+    {  
+        int uart_num = uart_port == uart0 ? UART_0 : UART_1;
         char c = uart_getc(uart_port);
     
-        if (!queue_try_add(&_irqEventQueue[idx], &c))
+        if (!queue_try_add(&_irqEventQueue[uart_num], &c))
         {   
             //queue if full
             char tmp=0;
-            queue_remove_blocking(&_irqEventQueue[idx], &tmp);    
-            queue_add_blocking(&_irqEventQueue[idx], &c);
+            queue_remove_blocking(&_irqEventQueue[uart_num], &tmp);    
+            queue_add_blocking(&_irqEventQueue[uart_num], &c);
             DBG_MSG("Serial: event queue full! discarging items...\n");
         }
-
     }   
 }
 
@@ -112,15 +97,9 @@ inline void SerialTask::processInit(Packet & rxPkt, Packet & txPkt)
 }
 
 inline void SerialTask::processDeInit(Packet & rxPkt, Packet & txPkt)
-{   
-    for (int q=0; q < UART_INSTANCES ; q++) 
-    {
-        while (queue_get_level(&_irqEventQueue[q]) > 0) 
-        {
-          uint32_t tmp=0;
-          queue_remove_blocking(&_irqEventQueue[q], &tmp);
-        }     
-    }    
+{     
+    auto uart_num = rxPkt.getPayloadItem8(0);
+    queue_free(&_irqEventQueue[uart_num % UART_INSTANCES]);
     txPkt.addPayloadItem8(rxPkt.getPayloadItem8(0));
 }
 
@@ -171,19 +150,23 @@ inline void SerialTask::processSetFormat(Packet & rxPkt, Packet & txPkt)
 
 inline void SerialTask::processSetIrq(Packet & rxPkt, Packet & txPkt)
 {
-    auto hwInstance = rxPkt.getPayloadItem8(0) == UART_0 ? uart0 : uart1; 
-    auto enable = rxPkt.getPayloadItem8(1); 
-    auto irq = rxPkt.getPayloadItem8(2); 
+    auto uart_num = rxPkt.getPayloadItem8(0) % UART_INSTANCES;
+    auto hwInstance = uart_num == UART_0 ? uart0 : uart1; 
     auto uart_irq = hwInstance == uart0 ? UART0_IRQ : UART1_IRQ;
 
+    auto enable = rxPkt.getPayloadItem8(1); 
+    auto irq = rxPkt.getPayloadItem8(2); 
+
     auto & callback = hwInstance == uart0 ? irqHandlerUART0_Rx : irqHandlerUART1_Rx;
-    // _rxReady[0] = false;
-    // _rxReady[1] = false;
+    
+    queue_free(&_irqEventQueue[uart_num]);
+    queue_init(&_irqEventQueue[uart_num], sizeof(char), EVT_QUEUE_MAX_SIZE);    
 
     irq_set_exclusive_handler(uart_irq, callback);      
 
     irq_set_enabled(uart_irq, enable);
-    uart_set_irq_enables(hwInstance, irq == RxIrq, irq == TxIrq);    
+    uart_set_irq_enables(hwInstance, irq == RxIrq, irq == TxIrq);   
+
 
     txPkt.addPayloadItem8(rxPkt.getPayloadItem8(0));
     txPkt.addPayloadItem8(enable);
@@ -293,37 +276,16 @@ void SerialTask::processRead(Packet & rxPkt, Packet & txPkt)
 void SerialTask::processEvents(Packet & txPkt)
 {   
     
-    // for (int i=0 ; i < 2 ; i++) //UART0 , UART1
-    // {
-    //     critical_section_enter_blocking(&_critSection);
-    //     if (_rxReady[i]) 
-    //     {      
-    //         printf("%c", _irqRxC[i]);
-    //         txPkt.addPayloadItem8(i); //UART0 , UART1
-    //         txPkt.addPayloadItem8(_irqRxC[i]);
-    //         _rxReady[i] = false;
-    //     }        
-    //     critical_section_exit(&_critSection);
-
-    //     if (txPkt.getPayloadLength() > 0)             
-    //     {
-    //       mainTask.cdcWrite(CDCItf::EVENT, txPkt.getBuffer(), txPkt.getBufferLength());
-    //     }                
-    // }
-
-
     for (int q=0 ; q < UART_INSTANCES ; q++)
     {
         uint8_t qsz = (uint8_t)queue_get_level(&_irqEventQueue[q]);  
     
-        int evt_cnt = qsz < EVT_QUEUE_MAX_SIZE ? qsz : EVT_QUEUE_MAX_SIZE-1 /*evt_cnt slot*/;
+        int evt_cnt = qsz < txPkt.getFreePayloadSlots() ? qsz : txPkt.getFreePayloadSlots()-1 /*env_cnt slot*/;        
     
         if (evt_cnt == 0) 
         {
-            return;
+            continue;
         }
-
-        printf("evt queue level=%d\n",qsz);         
 
         txPkt.addPayloadItem8(evt_cnt);      
     
@@ -334,7 +296,6 @@ void SerialTask::processEvents(Packet & txPkt)
 
             queue_remove_blocking(&_irqEventQueue[q], &evt_data);
             txPkt.addPayloadItem8(evt_data);
-            printf("evt data=%c\n",evt_data);
         }
     
         mainTask.cdcWrite(CDCItf::EVENT, txPkt.getBuffer(), txPkt.getBufferLength());        

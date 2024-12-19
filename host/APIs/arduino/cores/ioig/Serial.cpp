@@ -26,28 +26,24 @@ public:
 	~IoIgSerialImpl() {};
 
 	UART &_parent;
-	void on_rx(const char evtData);
+	void on_rx(const char *data, size_t len);
 	const size_t WRITE_BUFF_SZ = 32;
 	ioig::UART *_serial = nullptr;
 	int _tx, _rx, _rts, _cts;
-	RingBufferN<ioig::Packet::MAX_SIZE> rx_buffer;
+	std::vector<char> rxDataVec;
 	int _hw_instance = 0;
 };
 
-void IoIgSerialImpl::on_rx(const char evtData)
+void IoIgSerialImpl::on_rx(const char *data, size_t len)
 {
-	while (_serial->readable())
+	for (size_t i = 0; i < len; i++)
 	{
-		if (rx_buffer.availableForStore())
-		{
-			rx_buffer.store_char(evtData);
-		}
+		rxDataVec.push_back(data[i]);
 	}
 }
 
 UART::UART()
 {
-	// TODO: USB-CDC
 }
 
 UART::UART(int tx, int rx, int rts, int cts, unsigned hw_instance)
@@ -58,6 +54,7 @@ UART::UART(int tx, int rx, int rts, int cts, unsigned hw_instance)
 	pimpl->_rts = rts;
 	pimpl->_cts = cts;
 	pimpl->_hw_instance = hw_instance;
+	pimpl->rxDataVec.clear();
 }
 
 UART::~UART()
@@ -78,10 +75,10 @@ void UART::begin(unsigned long baudrate)
 	}
 	if (pimpl->_serial != nullptr)
 	{
-		pimpl->_serial->setInterrupt([this](const char c)
+		pimpl->rxDataVec.clear();
+		pimpl->_serial->setInterrupt([&](const char *data, size_t len)
 									 { 
-										printf("evt data=%c\n",c);
-										this->pimpl->on_rx(c); 									 
+										pimpl->on_rx(data, len); 
 									 });
 	}
 }
@@ -143,37 +140,44 @@ void UART::end()
 {
 	if (pimpl->_serial != nullptr)
 	{
-        pimpl->_serial->checkAndInitialize();
+		pimpl->_serial->checkAndInitialize();
 
-        ioig::Packet txPkt(4);
-        ioig::Packet rxPkt(4);
+		ioig::Packet txPkt(4);
+		ioig::Packet rxPkt(4);
 
-        txPkt.setType(ioig::Packet::Type::SERIAL_DEINIT);
+		txPkt.setType(ioig::Packet::Type::SERIAL_DEINIT);
 
-        ioig::UsbManager::transfer(txPkt, rxPkt, pimpl->_serial->getUsbPort());
+		ioig::UsbManager::transfer(txPkt, rxPkt, pimpl->_serial->getUsbPort());
 
 		delete pimpl->_serial;
 		pimpl->_serial = nullptr;
 	}
-	pimpl->rx_buffer.clear();
+	pimpl->rxDataVec.clear();
 }
 
 int UART::available()
 {
-	int c = pimpl->rx_buffer.available();
-	return c;
+	auto cur_sz = pimpl->rxDataVec.size();
+	int av = cur_sz < 256 ? 256 - cur_sz : 0;
+	return av;
 }
 
 int UART::peek()
 {
-	int c = pimpl->rx_buffer.peek();
-	return c;
+	if (pimpl->rxDataVec.empty())
+		return -1;
+
+	return pimpl->rxDataVec.back();
 }
 
 int UART::read()
 {
-	int c = pimpl->rx_buffer.read_char();
-	return c;
+	if (pimpl->rxDataVec.empty())
+		return -1;
+
+	uint8_t value = pimpl->rxDataVec.back();
+	pimpl->rxDataVec.pop_back();
+	return value;
 }
 
 void UART::flush()
@@ -185,7 +189,6 @@ void UART::flush()
 size_t UART::write(uint8_t c)
 {
 	printf("%c", c);
-	//int ret = pimpl->_serial->write(&c, 1);
 	int ret = pimpl->_serial->putc(c);
 	return ret == -1 ? 0 : 1;
 }
@@ -194,18 +197,10 @@ size_t UART::write(const uint8_t *buf, size_t len)
 {
 
 	printf("%.*s", (int)len, buf);
-	while (!pimpl->_serial->writeable()) 
-	           ;
-	
+	while (!pimpl->_serial->writeable())
+		;
+
 	int ret = pimpl->_serial->write(buf, len);
-	//  int ret=0;
-
-	// for (size_t i=0; i < len; i++) 
-	// {
-	// 	ret = pimpl->_serial->putc(buf[i]);				
-	// 	if (ret < 0) break;
-	// }
-
 
 	return ret == -1 ? 0 : len;
 }
@@ -214,4 +209,3 @@ UART::operator bool()
 {
 	return pimpl->_serial != nullptr;
 }
-

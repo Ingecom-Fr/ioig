@@ -15,37 +15,16 @@ namespace ioig
 
         void onEvent(Packet &eventPkt) override
         {
-            // auto pktType = eventPkt.getType();
-
-            // if (pktType != Packet::Type::SERIAL_EVENT)
-            // {
-            //     return;
-            // }
-
-            // auto hwInstance = eventPkt.getPayloadItem8(0);
-
-            // if (hwInstance != _parent._hwInstance)
-            // {
-            //     return;
-            // }
-
-            // if (_eventCallback != nullptr)
-            // {
-            //     _eventCallback((char)eventPkt.getPayloadItem8(1));
-            // }
-
-            int event_cnt = eventPkt.getPayloadItem8(0);
             auto pktType = eventPkt.getType();
     
             if (pktType != Packet::Type::SERIAL_EVENT)
             {
                 return;
             }
-    
-            for (int i = 1; i < event_cnt; i++)
-            {                
-                _eventCallback((char)eventPkt.getPayloadItem8(i));
-            }            
+            size_t  len = eventPkt.getPayloadItem8(0);
+            if (len > 0 && len < Packet::MAX_SIZE) {
+                _eventCallback((const char *)eventPkt.getPayloadBuffer(1), len);
+            }           
         }
 
         UART &_parent;
@@ -394,9 +373,14 @@ namespace ioig
     {
         checkAndInitialize();
 
+        if (pimpl->_eventCallback != nullptr) 
+        {
+            LOG_ERR(TAG, "Interrupt already set!");
+            return; //interrupt already set on firmware
+        }
+        
         Packet txPkt(8);
         Packet rxPkt(8);
-
         txPkt.setType(Packet::Type::SERIAL_SET_IRQ);
         auto txp0 = txPkt.addPayloadItem8(_hwInstance);
         auto txp1 = txPkt.addPayloadItem8(true); // enable
