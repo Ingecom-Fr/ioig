@@ -27,18 +27,23 @@ public:
 
 	UART &_parent;
 	void on_rx(const char *data, size_t len);
-	const size_t WRITE_BUFF_SZ = 32;
 	ioig::UART *_serial = nullptr;
 	int _tx, _rx, _rts, _cts;
-	std::vector<char> rxDataVec;
+	RingBufferN<256> rx_buffer;
 	int _hw_instance = 0;
 };
 
 void IoIgSerialImpl::on_rx(const char *data, size_t len)
 {
 	for (size_t i = 0; i < len; i++)
-	{
-		rxDataVec.push_back(data[i]);
+	{		
+		if (rx_buffer.availableForStore()) 
+		{
+			rx_buffer.store_char(data[i]);			
+		}
+		//else {
+			//puts("buff full");
+		//}		
 	}
 }
 
@@ -54,7 +59,6 @@ UART::UART(int tx, int rx, int rts, int cts, unsigned hw_instance)
 	pimpl->_rts = rts;
 	pimpl->_cts = cts;
 	pimpl->_hw_instance = hw_instance;
-	pimpl->rxDataVec.clear();
 }
 
 UART::~UART()
@@ -75,9 +79,8 @@ void UART::begin(unsigned long baudrate)
 	}
 	if (pimpl->_serial != nullptr)
 	{
-		pimpl->rxDataVec.clear();
 		pimpl->_serial->setInterrupt([&](const char *data, size_t len)
-									 { 
+									 {
 										pimpl->on_rx(data, len); 
 									 });
 	}
@@ -152,38 +155,28 @@ void UART::end()
 		delete pimpl->_serial;
 		pimpl->_serial = nullptr;
 	}
-	pimpl->rxDataVec.clear();
+	pimpl->rx_buffer.clear();
 }
 
 int UART::available()
 {
-	auto cur_sz = pimpl->rxDataVec.size();
-	int av = cur_sz < 256 ? 256 - cur_sz : 0;
-	return av;
+	return pimpl->rx_buffer.available();
 }
 
 int UART::peek()
 {
-	if (pimpl->rxDataVec.empty())
-		return -1;
-
-	return pimpl->rxDataVec.back();
+	return pimpl->rx_buffer.peek();
 }
 
 int UART::read()
 {
-	if (pimpl->rxDataVec.empty())
-		return -1;
-
-	uint8_t value = pimpl->rxDataVec.back();
-	pimpl->rxDataVec.pop_back();
-	return value;
+	return pimpl->rx_buffer.read_char();
 }
 
 void UART::flush()
 {
-	while (!pimpl->_serial->writeable())
-		;
+	while (!pimpl->_serial->writeable()) {}
+		
 }
 
 size_t UART::write(uint8_t c)
@@ -197,8 +190,7 @@ size_t UART::write(const uint8_t *buf, size_t len)
 {
 
 	printf("%.*s", (int)len, buf);
-	while (!pimpl->_serial->writeable())
-		;
+	while (!pimpl->_serial->writeable()) {}
 
 	int ret = pimpl->_serial->write(buf, len);
 

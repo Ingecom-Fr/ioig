@@ -159,7 +159,6 @@ inline void SerialTask::processSetIrq(Packet & rxPkt, Packet & txPkt)
 
     auto & callback = hwInstance == uart0 ? irqHandlerUART0_Rx : irqHandlerUART1_Rx;
     
-    queue_free(&_irqEventQueue[uart_num]);
     queue_init(&_irqEventQueue[uart_num], sizeof(char), EVT_QUEUE_MAX_SIZE);    
 
     irq_set_exclusive_handler(uart_irq, callback);      
@@ -287,15 +286,17 @@ void SerialTask::processEvents(Packet & txPkt)
             continue;
         }
 
-        txPkt.addPayloadItem8(evt_cnt);      
+        txPkt.addPayloadItem8(evt_cnt); 
+        //printf("evt_cnt=%d\n",evt_cnt);
     
         //chain events in a single pkt
         while (evt_cnt-- > 0) 
         {
             uint8_t evt_data;
 
-            queue_remove_blocking(&_irqEventQueue[q], &evt_data);
+            queue_remove_blocking(&_irqEventQueue[q], &evt_data);            
             txPkt.addPayloadItem8(evt_data);
+            //printf("%c\n",evt_data);
         }
     
         mainTask.cdcWrite(CDCItf::EVENT, txPkt.getBuffer(), txPkt.getBufferLength());        

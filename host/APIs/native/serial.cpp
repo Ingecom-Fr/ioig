@@ -22,7 +22,7 @@ namespace ioig
                 return;
             }
             size_t  len = eventPkt.getPayloadItem8(0);
-            if (len > 0 && len < Packet::MAX_SIZE) {
+            if (len > 0) {
                 _eventCallback((const char *)eventPkt.getPayloadBuffer(1), len);
             }           
         }
@@ -378,7 +378,7 @@ namespace ioig
             LOG_ERR(TAG, "Interrupt already set!");
             return; //interrupt already set on firmware
         }
-        
+
         Packet txPkt(8);
         Packet rxPkt(8);
         txPkt.setType(Packet::Type::SERIAL_SET_IRQ);

@@ -301,8 +301,9 @@ public:
 
         serial.setInterrupt([&](const char * data, size_t len)
         {  
-            for (size_t i=0; i < len ; i++) {
-                rxVec.push_back(data[i]);   
+            printf("dbg;len=%d\n", (int)len);
+            for (size_t i=0; i < len ; i++) {                
+                rxVec.push_back(data[i]);                   
             }
         });         
       
@@ -318,7 +319,9 @@ public:
 
         WAIT_MS(250); //wait aync data arrival from interrupt handler
 
-        for (size_t i = 0; i < sizeof(printableAsciiTable) ; i++)
+        EXPECT_EQ(rxVec.size(), sizeof(printableAsciiTable));
+
+        for (size_t i = 0; i < rxVec.size() ; i++)
         {   
             EXPECT_EQ(rxVec[i],printableAsciiTable[i]);
         }  
@@ -331,8 +334,10 @@ public:
         serial.write((uint8_t *)printableAsciiTable,data_len);
         WAIT_MS(250); //wait aync data arrival from interrupt handler
         
+        EXPECT_EQ(rxVec.size(), data_len);
+        
         //check received
-        for (size_t i = 0; i < data_len ; i++)
+        for (size_t i = 0; i < rxVec.size() ; i++)
         {                                    
             EXPECT_EQ(rxVec[i],printableAsciiTable[i]);
         }          
