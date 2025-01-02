@@ -8,7 +8,7 @@
 #include "ioig.h"
 
 
-#define CHECK_ANALOG_IN_PIN(pinNumber, action) if (pinNumber < 0 || pinNumber >= TARGET_PINS_COUNT || pinNumber != A0 || pinNumber != A1 || pinNumber != A2 || pinNumber != A3 ) action;
+#define CHECK_ANALOG_IN_PIN(pinNumber, action) if (pinNumber < 0 || pinNumber >= TARGET_PINS_COUNT || (pinNumber != A0 && pinNumber != A1 && pinNumber != A2 && pinNumber != A3) ) action;
 #define CHECK_ANALOG_OUT_PIN(pinNumber, action) if (pinNumber < 0 || pinNumber >= TARGET_PINS_COUNT ) action;
 
 
@@ -28,7 +28,6 @@ static ioig::AnalogIn * getAnalogInObj(pin_size_t pinNumber)
     std::lock_guard<std::mutex> lock(WiringAnalog::mutex);
     if (WiringAnalog::analogInVec.empty()) 
     {   
-        //init vectors
         for (size_t i = 0; i < ADC_INSTANCES; i++)        
         {
             WiringAnalog::analogInVec.push_back(nullptr);
@@ -39,13 +38,11 @@ static ioig::AnalogIn * getAnalogInObj(pin_size_t pinNumber)
 }
 
 
-
 static ioig::AnalogOut * getAnalogOutObj(pin_size_t pinNumber) 
 {    
     std::lock_guard<std::mutex> lock(WiringAnalog::mutex);
     if (WiringAnalog::analogOutVec.empty()) 
     {   
-        //init vectors
         for (size_t i = 0; i < TARGET_PINS_COUNT; i++)        
         {
             WiringAnalog::analogOutVec.push_back(nullptr);
