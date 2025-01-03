@@ -481,36 +481,3 @@ void loop()
 	}
 }
 
-
-
-// int main() 
-// {
-
-     
-         
-
-// 	LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display   
-//     lcd.init();                      // initialize the lcd 
-// 	lcd.backlight();
-// 	lcd.setCursor(3,0);
-
-// 	const char * ingeStr = "INGECOM";
-// 	int ingeStrlen = strlen(ingeStr);
-	
-
-// 	while (1) 
-// 	{
-// 		for (int y = 0; y < lcd.getRows(); y++)
-// 		{
-// 			for (int x = 0; x <= lcd.getCols() - ingeStrlen; x++)
-// 			{
-// 				lcd.clear();
-// 				lcd.setCursor(x, y);
-// 				lcd.print(ingeStr);
-// 				delay(600);
-// 			}
-// 		}
-// 	}
-
-// 	return 0;
-// }

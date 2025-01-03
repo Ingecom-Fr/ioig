@@ -287,17 +287,32 @@ void SerialTask::processEvents(Packet & txPkt)
         }
 
         txPkt.addPayloadItem8(evt_cnt); 
-        //printf("evt_cnt=%d\n",evt_cnt);
     
         //chain events in a single pkt
         while (evt_cnt-- > 0) 
         {
             uint8_t evt_data;
 
-            queue_remove_blocking(&_irqEventQueue[q], &evt_data);            
-            txPkt.addPayloadItem8(evt_data);
-            //printf("%c\n",evt_data);
+            //queue_remove_blocking(&_irqEventQueue[q], &evt_data);            
+            if (!queue_try_remove(&_irqEventQueue[q], &evt_data))
+            {
+                DBG_MSG("Serial: event queue is empty!\n");
+                continue;
+            }
+
+
+            /*
+               This is a workaround for the issue where the host receives  inverted or 
+               inconsistent data on host side
+               The delay ensures that each character is processed with enough time gap, 
+               reducing the chances of timing issues.
+             */
+            sleep_us(300); 
+
+            txPkt.addPayloadItem8(evt_data);            
         }
+
+        //txPkt.print();
     
         mainTask.cdcWrite(CDCItf::EVENT, txPkt.getBuffer(), txPkt.getBufferLength());        
     }

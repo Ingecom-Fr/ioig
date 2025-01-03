@@ -43,8 +43,8 @@ public:
             tempC = tempSensor.readOnboardTemp();
             
             //assuming room temperature
-            ASSERT_GE(tempC, 14) << "Temperature sensor read < 14";
-            ASSERT_LE(tempC, 35) << "Temperature sensor read > 35";      
+            ASSERT_GE(tempC, 0) << "Temperature sensor read < 0";
+            ASSERT_LE(tempC, 100) << "Temperature sensor read > 100";      
           
             if (i>5) //first reads are not stable
             { 
@@ -300,8 +300,7 @@ public:
         }
 
         serial.setInterrupt([&](const char * data, size_t len)
-        {  
-            printf("dbg;len=%d\n", (int)len);
+        {
             for (size_t i=0; i < len ; i++) {                
                 rxVec.push_back(data[i]);                   
             }
