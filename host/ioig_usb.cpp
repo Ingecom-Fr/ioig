@@ -7,6 +7,7 @@
 #include "ioig.h"
 #include "ioig_usb.h"
 
+
 #define PKT_DEBUG 0
 #define LIBUSB_LOG 0
 
@@ -28,6 +29,15 @@
 using namespace ioig;
 using namespace std::chrono_literals;
 
+//static members of UsbManager
+std::vector<libusb_device_handle *> UsbManager::_usbDevHandlerVec;
+std::vector<libusb_context *> UsbManager::_usbContextVec;
+std::vector<EventHandler *> UsbManager::_eventHandlerVec[MAX_USB_DEVICES];
+std::atomic_bool UsbManager::_running{false};
+std::mutex UsbManager::_mutex;
+std::mutex UsbManager::_printMutex;
+std::bitset<MAX_USB_DEVICES> UsbManager::_usbIndexInitMap;
+uint64_t UsbManager::_pktSeqNum{0};
 
 
 void UsbManager::deinit()
@@ -225,7 +235,7 @@ void UsbManager::registerEventHandler(EventHandler * evHandler, int usb_port)
     {
         if (!evHandlerFound) 
         {
-           eventHandlerVec.push_back(evHandler);       
+            eventHandlerVec.push_back(evHandler);       
         }else 
         {
             LOG_WARN(TAG,"Event handler already registered");
@@ -385,7 +395,7 @@ int UsbManager::transfer(Packet &txPkt, Packet &rxPkt, int usb_port, unsigned ti
     return 0;   
 }
 
-void ioig::UsbManager::checkAndInitialize(int usb_port)
+void UsbManager::checkAndInitialize(int usb_port)
 { 
     std::unique_lock<std::mutex> lock(_mutex);
 

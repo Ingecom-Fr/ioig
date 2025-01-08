@@ -13,13 +13,17 @@ find_path(PICO_SDK_PATH
         ${USER_HOME}/pico-sdk
         ${USER_HOME}/workspace/pico-sdk
         ${USER_HOME}/develzone/SDKs/pico-sdk
+        ${USER_HOME}/develspace/SDKs/pico-sdk        
         ${USER_HOME}/devel/pico-sdk
+        ${USER_HOME}/SDK/pico-sdk
         /opt/pico-sdk
         /z/SDKs/pico-sdk
         "Z:\\SDKs\\pico-sdk"
         "C:\\pico-sdk"
         "C:\\Program Files\\pico-sdk"
         "C:\\Program Files\\pico-sdk"
+        "${USER_HOME}\\pico-sdk"
+        "${USER_HOME}\\SDKs\\pico-sdk"
 )
 
 if(PICO_SDK_PATH)

@@ -105,9 +105,24 @@ void Spi::format(unsigned data_bits, unsigned cpol, unsigned cpha, unsigned orde
     txPkt.addPayloadItem8(data_bits);
     txPkt.addPayloadItem8(cpol);
     txPkt.addPayloadItem8(cpha);
-    txPkt.addPayloadItem8(order);
+    txPkt.addPayloadItem8(order);    
     
     UsbManager::transfer(txPkt, rxPkt, _usbPort);    
+}
+
+void Spi::set_freq(uint32_t freq)
+{
+    checkAndInitialize();
+
+    Packet txPkt;
+    Packet rxPkt;
+
+    txPkt.setType(Packet::Type::SPI_SET_FREQ);
+    txPkt.addPayloadItem8(_hwInstance);        
+    txPkt.addPayloadItem32(freq);
+    _freq = freq;
+    
+    UsbManager::transfer(txPkt, rxPkt, _usbPort);   
 }
 
 

@@ -110,20 +110,21 @@ namespace ioig
         static int recvPacket(Packet &pkt, int ep, int usb_port, unsigned timeout_ms);
 
 
-        inline static std::vector<libusb_device_handle *> _usbDevHandlerVec;
-        inline static std::vector<libusb_context *> _usbContextVec;
-        inline static std::vector<EventHandler *>  _eventHandlerVec[MAX_USB_DEVICES]; //An event vector per usb device
-        inline static void eventThread(int usb_port);
+        static std::vector<libusb_device_handle *> _usbDevHandlerVec;
+        static std::vector<libusb_context *> _usbContextVec;
+        static std::vector<EventHandler *>  _eventHandlerVec[MAX_USB_DEVICES]; //An event vector per usb device
+        static void eventThread(int usb_port);
 
-        inline static std::atomic_bool _running;
-        inline static std::mutex _mutex;
-        inline static std::mutex _printMutex;
-        inline static std::bitset<MAX_USB_DEVICES> _usbIndexInitMap;  /**< Each bit represents an usb index */
+        static std::atomic_bool _running;
+        static std::mutex _mutex;
+        static std::mutex _printMutex;
+        static std::bitset<MAX_USB_DEVICES> _usbIndexInitMap;  /**< Each bit represents an usb index */
         
-        inline static uint64_t _pktSeqNum;
+        static uint64_t _pktSeqNum;
 
-        inline static constexpr unsigned MAX_PKT_SEQ_NUM = 255;
-        inline static constexpr char TAG[] = "UsbManager";
+        static constexpr unsigned MAX_PKT_SEQ_NUM = 255;
+        static constexpr const char* TAG = "UsbManager";
+
     };
 
 

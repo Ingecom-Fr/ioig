@@ -14,7 +14,7 @@ GpioTask &gpioTask = GpioTask::instance();
 
 void GpioTask::init()
 {
-    queue_init(&_irqEventQueue, sizeof(uint32_t), EVT_QUEUE_MAX_SIZE);
+    queue_init(&_irqEventQueue, sizeof(uint32_t), EVT_QUEUE_MAX_SIZE);  //TODO: move to processSetIrq
     setState(Task::State::RUNNING);
 }
 
@@ -87,6 +87,7 @@ inline void GpioTask::processDeInit(Packet &rxPkt,Packet &txPkt)
 {    
     auto pin = rxPkt.getPayloadItem8(0); 
     gpio_deinit(pin);
+    //TODO: queue_free
     txPkt.addPayloadItem8(pin);
 }
 
@@ -118,7 +119,7 @@ inline void GpioTask::processEvents(Packet &txPkt)
 {        
     uint8_t qsz = (uint8_t)queue_get_level(&gpioTask._irqEventQueue);   
 
-    int evt_cnt = qsz <= 8 ? qsz : 8;
+    int evt_cnt = qsz < txPkt.getFreePayloadSlots() ? qsz : txPkt.getFreePayloadSlots()-1 /*env_cnt slot*/;
 
     if (evt_cnt == 0) 
     {

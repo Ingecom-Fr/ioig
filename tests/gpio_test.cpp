@@ -28,21 +28,22 @@ static void gpio_test()
     
     //----------------------------------------------------
     ioig::Gpio g11(11, Input, PullNone);                
-    auto evtCallback = [&](const uint32_t events)
+    auto evtCallback = [&](const int pin,const uint32_t events, void * arg)
     {        
+        (void)arg;
         switch (events)
         {
         case RiseEdge:
-            printf("RiseEdge event on pin %d\n", g11.getPin());
+            printf("RiseEdge event on pin %d\n", pin);
             break;
         case FallEdge:
-            printf("FallEdge event on pin %d\n", g11.getPin());
+            printf("FallEdge event on pin %d\n", pin);
             break;
         case LevelHigh:
-            printf("LevelHigh event on pin %d\n", g11.getPin());
+            printf("LevelHigh event on pin %d\n", pin);
             break;
         case LevelLow:
-            printf("LevelLow event on pin %d\n", g11.getPin());
+            printf("LevelLow event on pin %d\n", pin);
             break;        
         default:
             break;
@@ -56,9 +57,10 @@ static void gpio_test()
     g12.input(); 
     g12.mode(PullNone); 
 
-    g12.setInterrupt(FallEdge , [&](const uint32_t events) 
+    g12.setInterrupt(FallEdge , [&](const int pin,const uint32_t events, void * arg) 
     { 
-        printf("FallEdge on pin %d, ev value=%d\n", g12.getPin(), events);
+        (void)arg;
+        printf("FallEdge on pin %d, ev value=%d\n", pin , events);
     });
 
  

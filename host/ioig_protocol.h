@@ -332,6 +332,11 @@ namespace ioig
             return _bufSize - getBufferLength(); 
         }
 
+        inline bool isEmpty() const 
+        {
+            return getPayloadLength() == 0;
+        }
+
         inline size_t getPayloadLength() const
         {
             return _buffer[Header::PLD_LEN];

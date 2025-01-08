@@ -12,6 +12,7 @@
 #include "analog.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "serial.h"
 #include "spi.h"
 
 

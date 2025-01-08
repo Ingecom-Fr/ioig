@@ -31,7 +31,7 @@ private:
     void processSetBaud(Packet & rxPkt, Packet & txPkt);
     void processSetFormat(Packet & rxPkt, Packet & txPkt);
     void processSetIrq(Packet & rxPkt, Packet & txPkt);
-    void processSeFlowControl(Packet & rxPkt, Packet & txPkt);
+    void processSetFlowControl(Packet & rxPkt, Packet & txPkt);
     void processReadable(Packet & rxPkt, Packet & txPkt);
     void processWritable(Packet & rxPkt, Packet & txPkt);
     void processSetBreak(Packet & rxPkt, Packet & txPkt);
@@ -39,16 +39,15 @@ private:
     void processPutC(Packet & rxPkt, Packet & txPkt);
     void processWrite(Packet & rxPkt, Packet & txPkt);
     void processRead(Packet & rxPkt, Packet & txPkt);
-    void processEvent(Packet & rxPkt, Packet & txPkt);
-
+    void processEvents(Packet & txPkt);
 
     void onRxInterrupt(uart_inst_t *uart_port);
     static void irqHandlerUART0_Rx(void);
     static void irqHandlerUART1_Rx(void);
 
-    char     _irqRxC[2]; //UART0, UART1
-    bool     _rxReady[2];      
-    critical_section_t _critSection;	
+    queue_t  _irqEventQueue[UART_INSTANCES];    
+    static constexpr uint8_t EVT_QUEUE_MAX_SIZE=60;     
+
 
 };
 

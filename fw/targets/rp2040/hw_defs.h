@@ -107,6 +107,9 @@ typedef enum {
 } PWM_Instance;
 
 
+#define ADC_INSTANCES 3
+#define PWM_INSTANCES 16
+
 #define UART0_PINOUT0 GP0, GP1
 #define UART0_PINOUT1 GP12, GP13
 #define UART0_PINOUT2 GP16, GP17

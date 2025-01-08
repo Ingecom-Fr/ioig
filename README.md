@@ -76,7 +76,7 @@ cd ~/ #default folder, change it if needed
 git clone https://github.com/Ingecom-Fr/ioig.git
 cd ioig
 mkdir build && cd build
-cmake -G "Unix Makefiles" -DBUILD_IOIG_FW=1 -DBUILD_IOIG_TESTS=1 ..
+cmake -G "Unix Makefiles" -DIOIG_FW=1 -DIOIG_TESTS=1 ..
 make
 ~~~
 
@@ -122,7 +122,7 @@ cd ~/ #default folder, change it if needed
 git clone https://github.com/Ingecom-Fr/ioig.git
 cd ioig
 mkdir build && cd build
-cmake -G "Unix Makefiles" -DBUILD_IOIG_FW=1 -DBUILD_IOIG_TESTS=1 ..
+cmake -G "Unix Makefiles" -DIOIG_FW=1 -DIOIG_TESTS=1 ..
 make
 ~~~
 
@@ -154,6 +154,8 @@ Click on menu *Options*:
 ![Zadig0](docs/zadig0.png "Zadig0")
 
 Select *IoIg Multi Protocol Dongle* on Device List:
+
+NOTE: DO NOT SELECT 'IoIg Data Interface' nor 'IoIg Event Interface'. Make sure the selection is 'IoIg Multi Protocol Dongle'
 
   * Select (WinUSB) on *Target Driver* box -> Click on Reinstall Driver Button   
 
@@ -190,7 +192,7 @@ cd ~/ #default folder, change it if needed
 git clone https://github.com/Ingecom-Fr/ioig.git
 cd ioig
 mkdir build && cd build
-cmake -G "Unix Makefiles" -DBUILD_IOIG_FW=1 -DBUILD_IOIG_TESTS=1 ..
+cmake -G "Unix Makefiles" -DIOIG_FW=1 -DIOIG_TESTS=1 ..
 make
 ~~~
 

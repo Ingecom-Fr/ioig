@@ -38,12 +38,35 @@ namespace ioig
          */
         I2C(int sda, int scl, unsigned long freq_hz=100000, unsigned hw_instance=0);
 
-        //Copy constructor
-        I2C(const I2C& other) = default;
-        
-        //Assignment operator 
-        I2C &operator=(const I2C &other) = default;
+        // Disable Copy Constructor and Copy Assignment
+        I2C(const I2C&) = delete;
+        I2C& operator=(const I2C&) = delete;
+    
 
+        // Enable Move Constructor
+        I2C(I2C&& other) noexcept
+            : Peripheral(std::move(other)),  // Move base class
+            _sda(other._sda),
+            _scl(other._scl),
+            _freq(other._freq),
+            _addr(other._addr),
+            _hwInstance(other._hwInstance),
+            _timeout(other._timeout) {}
+    
+        // Enable Move Assignment Operator
+        I2C& operator=(I2C&& other) noexcept
+        {
+            if (this != &other) {
+                Peripheral::operator=(std::move(other)); // Move base class
+                _sda = other._sda;
+                _scl = other._scl;
+                _freq = other._freq;
+                _addr = other._addr;
+                _hwInstance = other._hwInstance;
+                _timeout = other._timeout;
+            }
+            return *this;
+        }
 
         ~I2C();
 
@@ -92,23 +115,11 @@ namespace ioig
          *  @returns 0 on success, -1 on NAC, -2 on Timeout, -3 unknown error
          */
         int write(int address, const uint8_t *data, int length, bool nostop = false);
+
+
+        void set_addr(int addr) { _addr = addr; }
+        int get_addr() { return _addr; }
         
-        
-        //Arduino API : TODO: move it to api implementation
-        void begin();    
-        void begin(uint8_t address); //slave
-        void end();  
-        void beginTransmission(uint8_t address);
-        uint8_t endTransmission(bool stopBit);
-        uint8_t endTransmission(void);
-        size_t requestFrom(uint8_t address, size_t len, bool stopBit);
-        size_t requestFrom(uint8_t address, size_t len);
-        size_t write(uint8_t data);
-        size_t write(const uint8_t* data, int len);
-        int read();
-        int peek();
-        void flush();
-        int available();
         
     private:
             
@@ -121,7 +132,8 @@ namespace ioig
         int      _hwInstance;
         uint32_t _timeout;
 
-        static constexpr char TAG[] = "I2C";
+        static constexpr const char* TAG = "I2C";
+
     };
 
 }

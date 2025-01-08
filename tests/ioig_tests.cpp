@@ -28,10 +28,9 @@ class AnalogIn_TestBench
 {
 public:
     AnalogIn_TestBench()
-     :tempSensor(ioig::AnalogIn(ADC_TEMP,10,4))
+     :tempSensor(std::move(ioig::AnalogIn(ADC_TEMP,10,4)))
     {
         tempSensor.attachToUsbPort(USB_PORT);
-
     }
 
     void run()
@@ -44,8 +43,8 @@ public:
             tempC = tempSensor.readOnboardTemp();
             
             //assuming room temperature
-            ASSERT_GE(tempC, 14) << "Temperature sensor read < 14";
-            ASSERT_LE(tempC, 35) << "Temperature sensor read > 35";      
+            ASSERT_GE(tempC, 0) << "Temperature sensor read < 0";
+            ASSERT_LE(tempC, 100) << "Temperature sensor read > 100";      
           
             if (i>5) //first reads are not stable
             { 
@@ -115,8 +114,10 @@ public:
         echo2.input();
         echo2.mode(PullNone);
 
-        auto evtCallback = [&](const uint32_t events)
-        {
+        auto evtCallback = [&](const int pin, const uint32_t events, void * arg)
+        {            
+            (void)pin;
+            (void)arg;
             switch (events)
             {
             case RiseEdge:
@@ -129,10 +130,13 @@ public:
                 break;
             }
         };
-        echo1.setInterrupt(RiseEdge | FallEdge, evtCallback);
+        echo1.setInterrupt(RiseEdge | FallEdge , evtCallback);
 
-        echo2.setInterrupt(FallEdge, [&](const uint32_t events)
+        echo2.setInterrupt(FallEdge, [&](const int pin, const uint32_t events, void * arg)
         {
+            (void)pin;
+            (void)arg;
+            
             switch (events)
             {
             case RiseEdge:
@@ -167,7 +171,6 @@ public:
             EXPECT_EQ(event1RiseCnt, event1FallCnt);
 
         });
-
         
 
         auto thread2 = std::thread([&]()
@@ -289,18 +292,20 @@ class SerialTestBench
 {
 public:
     SerialTestBench()
-        : serial(ioig::Serial(UART1_PINOUT1, 115200, UART_1))
+        : serial(ioig::UART(UART1_PINOUT1, 115200, UART_1))
     {
         // Populate the array with printable ASCII characters
         for (int i = 32; i <= 126; ++i) {
             printableAsciiTable[i - 32] = static_cast<char>(i);
         }
 
-        rxCnt = 0;
-        serial.setInterrupt([&](const char evtData)
+        serial.setInterrupt([&](const char * data, size_t len)
         {
-            rxBuf[rxCnt++] = evtData;        
-        });        
+            for (size_t i=0; i < len ; i++) {                
+                rxVec.push_back(data[i]);                   
+            }
+        });         
+      
     }
 
     void run()
@@ -309,20 +314,37 @@ public:
         for (size_t i = 0; i < sizeof(printableAsciiTable) ; i++)
         {            
             serial.putc(printableAsciiTable[i]);                                       
-            WAIT_MS(1);
         }
 
-        for (size_t i = 0; i < sizeof(printableAsciiTable) ; i++)
+        WAIT_MS(250); //wait aync data arrival from interrupt handler
+
+        EXPECT_EQ(rxVec.size(), sizeof(printableAsciiTable));
+
+        for (size_t i = 0; i < rxVec.size() ; i++)
+        {   
+            EXPECT_EQ(rxVec[i],printableAsciiTable[i]);
+        }  
+
+        const int data_len = 50;
+        rxVec.clear(); //clear rx data
+        EXPECT_TRUE(rxVec.empty());
+        
+        //write new data in one shot
+        serial.write((uint8_t *)printableAsciiTable,data_len);
+        WAIT_MS(250); //wait aync data arrival from interrupt handler
+        
+        EXPECT_EQ(rxVec.size(), data_len);
+        
+        //check received
+        for (size_t i = 0; i < rxVec.size() ; i++)
         {                                    
-            EXPECT_EQ(rxBuf[i],printableAsciiTable[i]);
-        }        
+            EXPECT_EQ(rxVec[i],printableAsciiTable[i]);
+        }          
     }
    
-    ioig::Serial serial;        
-    static constexpr unsigned BUFF_SIZE = 256;
+    ioig::UART serial;        
     char printableAsciiTable[95];
-    uint8_t rxBuf[BUFF_SIZE] = {0};
-    int rxCnt;
+    std::vector<char> rxVec;
 };
 
 

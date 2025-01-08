@@ -1,9 +1,56 @@
-#include "Arduino.h"
 #include <chrono>
 #include <thread>
+#include <iostream>
+#include <random>
+#include <string>
+#include <cstdlib>
+#include <type_traits>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
+#include "Arduino.h"
+#include "deprecated-avr-comp/avr/dtostrf.h"
 
 static std::chrono::high_resolution_clock::time_point startTimestamp;
+
+// Seed the random number generator
+void randomSeed(unsigned long seed) {
+    if (seed == 0) {
+        // If seed is 0, use the current time as the seed
+        seed = (unsigned long)time(NULL);
+    }
+    srand((unsigned int)seed);
+}
+
+// Generate a random number between 0 and max (exclusive)
+long random(long max) {
+    if (max <= 0) {
+        return 0; // Return 0 for invalid max values
+    }
+    return rand() % max;
+}
+
+// Generate a random number between min and max (exclusive)
+long random(long min, long max) {
+    if (min >= max) {
+        return min; // Return min if the range is invalid
+    }
+    return min + (rand() % (max - min));
+}
+
+char *dtostrf(double val, signed char width, unsigned char prec, char *sout) 
+{
+    if (sout == nullptr) return nullptr;
+
+    char format[32];
+    snprintf(format, sizeof(format), "%%%d.%df", width, prec);
+
+    // Format the double value into the output buffer
+    snprintf(sout, width + 1, format, val);
+
+    return sout;
+}
 
 
 // Declared weak in Arduino.h to allow user redefinitions.
@@ -60,11 +107,6 @@ int main()
 	init();
 	initVariant();
 
-#if defined(SERIAL_CDC)
-  PluggableUSBD().begin();
-  _SerialUSB.begin(115200);
-#endif
-
 	setup();
 
 	for (;;) {
@@ -74,3 +116,24 @@ int main()
 
 	return 0;
 }
+
+
+#if defined(_WIN32) || defined(_WIN64)
+int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) 
+{
+    (void)hInstance;
+    (void)hPrevInstance;
+    (void)lpCmdLine;
+    (void)nCmdShow;
+	init();
+	initVariant();
+
+	setup();
+
+	for (;;) {
+		loop();
+	}
+
+	return 0;
+}
+#endif

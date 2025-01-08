@@ -61,8 +61,8 @@ extern "C"{
 #endif // abs
 #define abs(x) ((x)>0?(x):-(x))
 
-#define interrupts()        __enable_irq()
-#define noInterrupts()      __disable_irq()
+#define interrupts()        do { __asm__ volatile ("nop"); } while (0)
+#define noInterrupts()      do { __asm__ volatile ("nop"); } while (0)
 
 // We provide analogReadResolution and analogWriteResolution APIs
 void analogReadResolution(int bits);
@@ -72,18 +72,7 @@ void analogWriteResolution(int bits);
 } // extern "C"
 #endif
 
-//#include "pins_arduino.h"
 
-#ifdef __cplusplus
-// Types used for the table below
-typedef struct _PinDescription PinDescription;
-typedef struct _AnalogPinDescription AnalogPinDescription;
-
-// Pins table to be instantiated into variant.cpp
-extern PinDescription g_APinDescription[];
-extern AnalogPinDescription g_AAnalogPinDescription[];
-extern AnalogPinDescription g_AAnalogOutPinDescription[];
-extern AnalogPinDescription g_pureAAnalogPinDescription[];
 
 #ifdef ANALOG_CONFIG
 #include "hal/analogin_api.h"
@@ -97,39 +86,19 @@ void analogAcquisitionTime(uint8_t time);
 void analogUpdate();
 extern bool isAdcConfigChanged;
 extern analogin_config_t adcCurrentConfig;
-
 #endif
 
-//TODO:
-//#include "Serial.h"
+#include "Serial.h"
 //#include "timer.h"
-#if defined(SERIAL_CDC)
-#define Serial _UART_USB_
-#define SerialUSB _UART_USB_
-#else
-#define Serial _UART1_
-#endif
+
 #define Serial1 _UART1_
 #define Serial2 _UART2_
-#define Serial3 _UART3_
-#define Serial4 _UART4_
 
-#if defined(RPC_SERIAL)
-#undef Serial
-#if __has_include("RPC.h")
-#include "SerialRPC.h"
-#define Serial SerialRPC
-#else
-extern ErrorSerialClass ErrorSerial;
-#define Serial ErrorSerial
-#endif
+
+#include "overloads.h"
 #endif
 
-//TODO:
-//#include "overloads.h"
-#endif
+#include "macros.h"
 
-//TODO:
-//#include "macros.h"
+#include "ioig.h"
 
-#endif
