@@ -22,6 +22,8 @@ find_path(PICO_SDK_PATH
         "C:\\pico-sdk"
         "C:\\Program Files\\pico-sdk"
         "C:\\Program Files\\pico-sdk"
+        "${USER_HOME}\\pico-sdk"
+        "${USER_HOME}\\SDKs\\pico-sdk"
 )
 
 if(PICO_SDK_PATH)

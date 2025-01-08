@@ -116,3 +116,24 @@ int main()
 
 	return 0;
 }
+
+
+#if defined(_WIN32) || defined(_WIN64)
+int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) 
+{
+    (void)hInstance;
+    (void)hPrevInstance;
+    (void)lpCmdLine;
+    (void)nCmdShow;
+	init();
+	initVariant();
+
+	setup();
+
+	for (;;) {
+		loop();
+	}
+
+	return 0;
+}
+#endif

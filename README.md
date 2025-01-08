@@ -155,6 +155,8 @@ Click on menu *Options*:
 
 Select *IoIg Multi Protocol Dongle* on Device List:
 
+NOTE: DO NOT SELECT 'IoIg Data Interface' nor 'IoIg Event Interface'. Make sure the selection is 'IoIg Multi Protocol Dongle'
+
   * Select (WinUSB) on *Target Driver* box -> Click on Reinstall Driver Button   
 
 ![Zadig1](docs/zadig1.png "Zadig1")

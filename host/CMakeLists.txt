@@ -97,12 +97,8 @@ add_custom_command(
 # ArduinoCore API 
 #==========================================================
 
-#TODO: fix WIN Build
-if(NOT WIN32) #TODO: fix windows build for arduino code
-
 add_subdirectory(${HOST_DIR}/APIs/arduino)
 
-endif()
 
 #==========================================================
 # Build tests dir
@@ -167,7 +163,6 @@ endforeach()
 set(EXAMPLES_DIR_ARDUINO ${PRJ_ROOT_DIR}/examples/arduino)
 file(GLOB_RECURSE EXAMPLE_SRCS_ARDUINO ${EXAMPLES_DIR_ARDUINO}/*.cpp)
 
-#set(ARDUINO_CORE_API_HEADER "${ARDUINO_CORE_API_DIR}/ArduinoAPI.h")
 set(ARDUINO_CORE_API_HEADER "${ARDUINO_CORE_DIR}/cores/ioig/Arduino.h")
 
 # Iterate over each source file and create an executable
@@ -178,12 +173,13 @@ foreach(SRC_FILE ${EXAMPLE_SRCS_ARDUINO})
 
     # Create the executable
     add_executable(${BIN_NAME} ${SRC_FILE})
-    
-    # Add precompiled header support
-    target_precompile_headers(${BIN_NAME} PRIVATE ${ARDUINO_CORE_API_HEADER})
+
     target_include_directories(${BIN_NAME} PRIVATE  ${EXAMPLES_DIR_ARDUINO}                                                                                                        
                                                     "${ARDUINO_CORE_DIR}/cores/ioig" 
                                                     ${ARDUINO_CORE_API_DIR})    
+
+    # Add precompiled header support
+    target_precompile_headers(${BIN_NAME} PRIVATE  ${WIN_COMPAT_HEADER} ${ARDUINO_CORE_API_HEADER})
 
     target_link_libraries(${BIN_NAME} ArduinoCore  ${IOIG_HOST_LIB} ${SYS_LIBS}) 
 
