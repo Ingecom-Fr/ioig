@@ -8,12 +8,11 @@ IoIg (Input/Output Integration Gateway) empowers any USB host device with versat
 Existing market devices often fall short in interrupt handling and protocol mixing capabilities. After testing of prominent devices like FT4232H, FT4222HQ, FT2232, and MCP2210, we identified significant limitations that inspired the development of IoIg. The primary drawback of these devices lies in their constraints on interrupt numbers and the complexity involved in simultaneously managing multiple protocols. IoIg addresses these shortcomings, providing a solution that unlocks versatility in USB host device communication.
 
 Additionally, we have developed a simple and consistent C++ API that can be used on any compatible host(Linux, Windows, MacOS and Android). 
-Currently, we are also working on porting the **Arduino Core API**, which can be used in the project and will provide the possibility of running any Arduino code on the host side along with the power of modern multi-threaded C++.
+Currently, we also support the **Arduino Core API**, which can be used in the project and will provide the possibility of running any Arduino code on the host side along with the power of modern multi-threaded C++.
 
 Having the Arduino API on the host has several advantages: One of them is directly supporting any Arduino compatible module device. The second advantage is simplifying code debugging. Another advantage is not needing to flash firmware every time a device driver is modified.
 
 The current firmware supports [The Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/) board. We are currently planning to port the firmware to Zephyr OS to extend support to other boards.
-
 
 - Features:
 
@@ -21,10 +20,9 @@ The current firmware supports [The Raspberry Pi Pico](https://www.raspberrypi.co
     - USB 1.0/1.1: Full-Speed: 12 Mbps
     - Async Interrupt Events (no poll)
     - 64 bytes packets (~60 bytes payload)
+    - Arduino API Support
 
 - Roadmap:
-
-    - Arduino API Support (Work in progress)
     - Port firmware to [Zephyr OS](https://www.zephyrproject.org/)
 
 
