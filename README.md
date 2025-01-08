@@ -153,7 +153,7 @@ Click on menu *Options*:
 
 Select *IoIg Multi Protocol Dongle* on Device List:
 
-NOTE: DO NOT SELECT 'IoIg Data Interface' nor 'IoIg Event Interface'. Make sure the selection is 'IoIg Multi Protocol Dongle'
+NOTE: **DO NOT SELECT** 'IoIg Data Interface' or 'IoIg Event Interface'. Ensure that the selection is 'IoIg Multi Protocol Dongle'.
 
   * Select (WinUSB) on *Target Driver* box -> Click on Reinstall Driver Button   
 
