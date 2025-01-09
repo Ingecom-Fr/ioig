@@ -210,6 +210,14 @@ Once build is done, the firmware is located in /path/to/ioig/build/fw folder.
 
 Follow the section [Run IoIg tests](#run-ioig-tests) to execute automatic tests
 
+## Samples
+
+Some code examples using the Arduino API and the Native API can be found in the examples/arduino and examples/ioig folders, respectively.
+Once the project is built, all binaries are created in the build/examples folder. Note that some examples require an RPI-PICO board and peripheral devices to run, which may involve additional wiring.
+
+To create a new example, simply add a .cpp file to either the examples/arduino or examples/ioig folder, delete all build files, and rebuild the project from scratch.
+Arduino sketches found online can be placed in the examples/arduino folder. They should build and work as expected.
+
 
 ## Run IoIg tests
 
@@ -234,6 +242,13 @@ cd ~/ioig/build/host/tests
 
 ## Debugging IoIg USB protocol
 
+The UART0 interface on the RPI-PICO is the default for displaying debug messages from the firmware. 
+Some examples or tests rely on this interface, so ensure it is not activated when running code that uses UART0.
+To desactivate it, use the value 0 of this line in fw/CMakeLists.txt file: 
+
+~~~
+pico_enable_stdio_uart(${IOIG_FW} 0) 
+~~~
 
 ### Wireshark debug
 
